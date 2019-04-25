@@ -1,7 +1,73 @@
 <% include ./partials/header %>
-<div>
-		<p>
-		
-		</p>
-</div>
+	<script src="/swiperSlide.js"></script>
+	<script>
+		var mainObj = {
+			isMobile: false,
+			device: "desktop",
+			jamData: {
+				"sitename": "pubdemo.jumpstartauto.net",
+				"site": "jam.pubdemo.home.dfp",
+				"adunit": "",
+				"prod": "homepage",
+				"subprod": "",
+				"yr": "2019",
+				"mak": "",
+				"mod": "",
+				"type": "",
+				"style": "",
+				"fuel": "",
+				"pub": "jumpstart",
+				"pubtemplate": "homepage",
+				"test": "jumpstart",
+				"content": ""
+			}
+		};
+		googletag.cmd.push(function() {
+			googletag.defineSlot("/36117602/jam.pubdemo.home.dfp",[728,90], "div-gpt-ad-1")
+					.addService(googletag.pubads())
+					.setTargeting("prod",mainObj.jamData.prod)
+					.setTargeting("test",mainObj.jamData.test)
+					.setTargeting("yr",mainObj.jamData.yr);
+			googletag.pubads().enableSingleRequest();
+			googletag.enableServices();
+		});
+	</script>
+<!-- extending head container because of GPT -->
+</head>
+
+<body>
+	<div class="feature-container">
+	    <div class="jumbotron jumbotron-fluid">
+	        <div class="container">
+	            <div class="swiper-container">
+	                <div class="swiper-wrapper">
+	                    <div class="swiper-slide" style="background-image:url(https://pubdemo.jumpstartauto.net/images/publisher_logos/white/publisher_car_and_driver.png)"></div>
+	                    <div class="swiper-slide" style="background-image:url(https://pubdemo.jumpstartauto.net/images/publisher_logos/white/publisher_road_and_track.png)"></div>
+	                    <div class="swiper-slide" style="background-image:url(https://pubdemo.jumpstartauto.net/images/publisher_logos/white/publisher_nadaguides.png)"></div>
+						<div class="swiper-slide" style="background-image:url(https://pubdemo.jumpstartauto.net/images/publisher_logos/white/publisher_autobytel.png)"></div>
+						<div class="swiper-slide" style="background-image:url(https://pubdemo.jumpstartauto.net/images/publisher_logos/white/publisher_carbuzz.png)"></div>
+						<div class="swiper-slide" style="background-image:url(https://pubdemo.jumpstartauto.net/images/publisher_logos/white/publisher_autoweek.png)"></div>
+						<div class="swiper-slide" style="background-image:url(https://pubdemo.jumpstartauto.net/images/publisher_logos/white/publisher_autolist.png)"></div>
+						<div class="swiper-slide" style="background-image:url(https://pubdemo.jumpstartauto.net/images/publisher_logos/white/publisher_usnews.png)"></div>
+						<div class="swiper-slide" style="background-image:url(https://pubdemo.jumpstartauto.net/images/publisher_logos/white/publisher_jdpower.png)"></div>
+						<div class="swiper-slide" style="background-image:url(https://pubdemo.jumpstartauto.net/images/publisher_logos/white/publisher_vehicle_history.png)"></div>
+						<div class="swiper-slide" style="background-image:url(https://pubdemo.jumpstartauto.net/images/publisher_logos/white/publisher_left_lane_news.png)"></div>
+						<div class="swiper-slide" style="background-image:url(https://pubdemo.jumpstartauto.net/images/publisher_logos/white/publisher_carstory.png)"></div>
+						<div class="swiper-slide" style="background-image:url(https://pubdemo.jumpstartauto.net/images/publisher_logos/white/publisher_iseecars.png)"></div>
+						<div class="swiper-slide" style="background-image:url(https://pubdemo.jumpstartauto.net/images/publisher_logos/white/publisher_carpages.png)"></div>
+	                </div>
+	                <!-- Add Pagination -->
+	                <div class="swiper-pagination"></div>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+	<div id="div-gpt-ad-1" style="width: 728px; height: 90px">
+	    <script>
+	        googletag.cmd.push(function() {
+	            googletag.display("div-gpt-ad-1");
+	        });
+	    </script>
+	</div>
+
 <% include ./partials/footer %>
