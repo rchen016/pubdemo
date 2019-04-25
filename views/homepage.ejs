@@ -23,7 +23,17 @@
 			}
 		};
 		googletag.cmd.push(function() {
-			googletag.defineSlot("/36117602/jam.pubdemo.home.dfp",[728,90], "div-gpt-ad-1")
+			googletag.defineSlot("/36117602/jam.pubdemo.home.dfp",[[728,90],[970,250],[970,90]], "div-gpt-ad-1")
+					.addService(googletag.pubads())
+					.setTargeting("prod",mainObj.jamData.prod)
+					.setTargeting("test",mainObj.jamData.test)
+					.setTargeting("yr",mainObj.jamData.yr);
+			googletag.defineSlot("/36117602/jam.pubdemo.home.dfp",[300,250], "div-gpt-ad-2")
+					.addService(googletag.pubads())
+					.setTargeting("prod",mainObj.jamData.prod)
+					.setTargeting("test",mainObj.jamData.test)
+					.setTargeting("yr",mainObj.jamData.yr);
+			googletag.defineSlot("/36117602/jam.pubdemo.home.dfp",[300,120], "div-gpt-ad-3")
 					.addService(googletag.pubads())
 					.setTargeting("prod",mainObj.jamData.prod)
 					.setTargeting("test",mainObj.jamData.test)
@@ -71,6 +81,64 @@
 			        });
 			    </script>
 			</div>
+		</div>
+	</div>
+	<div id="mainblock" class="container">
+		<div class="row">
+			<div id="content1-left" class="col-md-8 col-sm-7">
+				<h1>Ad Flow - Awareness #1</h1>
+				<div class="panel panel-default">
+					<div class="panel-body">Made up of the Homepage and Navigational Landing Pages. Homepage is the entry point into the site. Navigational Landing Pages are any landing page where featuring editorial content that is not specific to a make, model, or body style. Includes the Suggestive Selling Menu and Xcelerate in addition to standard ad flow.</div>
+				</div>
+				<h2>Research Vehicles</h2>
+				<div class="browseCars">
+					<p>By Make and Model</p>
+					<div class="makModForm form-check-inline">
+						<div class="dropdown dropdownmak col-md-5">
+						    <button class="btn btn-light btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						        Make
+						    </button>
+						    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+						        <a class="dropdown-item" href="#">Acura</a>
+						        <a class="dropdown-item" href="#">Audi</a>
+						        <a class="dropdown-item" href="#">Honda</a>
+						    </div>
+						</div>
+						<div class="dropdown dropdownmod col-md-5">
+						    <button class="btn btn-light btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						        Model
+						    </button>
+						    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+						        <a class="dropdown-item" href="#">Model1</a>
+						        <a class="dropdown-item" href="#">Model2</a>
+						        <a class="dropdown-item" href="#">Model3</a>
+						    </div>
+						</div>
+						<button type="button" class="btn btn-dark col-md-2 btn-outline-secondary"><span id="browseBtn">Browse</span></button>
+					</div>
+				</div>
+			</div>
+			<div id="content1-right" class="col-md-4 col-sm-5">
+				<div class="d-flex justify-content-center" id="jam_300x250">
+					<div id="div-gpt-ad-2" style="width: 300px; height: 250px">
+					    <script>
+					        googletag.cmd.push(function() {
+					            googletag.display("div-gpt-ad-2");
+					        });
+					    </script>
+					</div>
+				</div>
+				<div class="d-flex justify-content-center" id="jam_300x120">
+					<div id="div-gpt-ad-3" style="width: 300px; height: 120px">
+					    <script>
+					        googletag.cmd.push(function() {
+					            googletag.display("div-gpt-ad-3");
+					        });
+					    </script>
+					</div>
+				</div>
+			</div>
+
 		</div>
 	</div>
 

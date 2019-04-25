@@ -1,7 +1,8 @@
 var express = require("express"),
     app     = express(),
 	path    = require("path");
-	Swiper  = require("swiper")
+	Swiper  = require("swiper"),
+	popper  = require("popper.js")
 app.use(express.static(path.join(__dirname, 'public')));
 app.set("view engine","ejs");
 app.get("/",function(req,res){
