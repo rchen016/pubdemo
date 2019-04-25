@@ -1,19 +1,26 @@
 //Swiper sliding trigger
-$(document).ready(function () {
-	var swiper = new Swiper('.swiper-container', {
-      effect: 'coverflow',
-      grabCursor: true,
-      centeredSlides: true,
-      slidesPerView: 'auto',
-      coverflowEffect: {
-        rotate: 50,
-        stretch: 0,
-        depth: 100,
-        modifier: 1,
-        slideShadows : true,
-      },
-      pagination: {
-        el: '.swiper-pagination',
-      },
+$(document).ready(function() {
+    var swiper = new Swiper('.swiper-container', {
+        effect: 'coverflow',
+		loop: true,
+		centeredSlides: true,
+		autoplay:{
+			delay: 1500,
+			disableOnInteraction: true
+		},
+		speed: 500,
+        grabCursor: true,
+        centeredSlides: true,
+        slidesPerView: 'auto',
+        coverflowEffect: {
+            rotate: 50,
+            stretch: 0,
+            depth: 100,
+            modifier: 1,
+            slideShadows: true,
+        },
+        pagination: {
+            el: '.swiper-pagination',
+        },
     });
 });
