@@ -46,3 +46,25 @@
 .dropdownmenu{
 	width: 90%;
 }
+
+.bottomFooter{
+	margin-top: 75px;
+}
+
+.featuredArticleContent{
+	margin-left: 0px;
+}
+
+.pubLogo{
+	margin-bottom: 10px;
+}
+
+.ourPubText{
+	margin-bottom: 25px;
+	margin-top: 25px;
+	color: #FFFFFF;
+}
+
+.bottomestFooter{
+	color: #FFFFFF;
+}
