@@ -79,7 +79,7 @@ html, body {
 .bodyIcons{
 	display: inline-block;
 	margin: 0;
-	width: 114px;
+	width: 110px;
 	text-align: center !important;
 	box-sizing: content-box;
 	padding: 15px 2.2%;
@@ -98,6 +98,9 @@ html, body {
     margin-right: -4px;
 }
 
+.divyBar{
+	display: none;
+}
 .articleImg{
 	width: 100%;
 }
@@ -154,5 +157,8 @@ html, body {
 		margin-top: 25px;
 		width: 100%;
 		text-align: center;
+	}
+	.divyBar{
+		display:block;
 	}
 }
