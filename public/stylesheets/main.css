@@ -1,7 +1,9 @@
 .jumbotron{
 	min-height: 285px;
 }
-
+html, body {
+  overflow-x:hidden
+}
 .swiper-container {
 	width: 100%;
 	padding-top: 50px;
@@ -56,7 +58,12 @@
 }
 
 .pubLogo{
-	margin-bottom: 10px;
+	display: inline-block;
+	margin-right: 50px;
+	width: 114px;
+	text-align: center !important;
+	box-sizing: content-box;
+	padding: 15px 2.2%;
 }
 
 .ourPubText{
@@ -69,35 +76,83 @@
 	color: #FFFFFF;
 }
 
-@media only screen and (max-width: 414px) {
-  body {
-    background-color: lightblue;
-  }
-  .swiper-slide-settings{
-	  background-size: 50% 50%;
-	  background-repeat: no-repeat;
-  }
-  .makModForm{
-	  display:block;
-  }
-  .dropdownmak{
-	  margin-bottom: 15px;
-  }
-  .dropdownmod{
-	  margin-bottom: 15px;
-  }
-  #researchV{
-	  margin-top: 15px;
-  }
-  #content1-left{
-	  margin-top: 50px;
-  }
-  .jumbotron{
-	  margin-bottom: 0px;
-  }
+.bodyIcons{
+	display: inline-block;
+	margin: 0;
+	width: 114px;
+	text-align: center !important;
+	box-sizing: content-box;
+	padding: 15px 2.2%;
+}
 
-  #div-gpt-mob-ad-2{
-	  margin-top: 50px;
-	  margin-bottom: 50px;
-  }
+.row-centered {
+    text-align: center;
+}
+
+.col-centered {
+    display: inline-block;
+    float: none;
+    /* reset the text-align */
+    text-align: left;
+    /* inline-block space fix */
+    margin-right: -4px;
+}
+
+.articleImg{
+	width: 100%;
+}
+@media only screen and (max-width: 414px) {
+	body {
+	    background-color: lightblue;
+	}
+
+	.swiper-slide-settings {
+	    background-size: 50% 50%;
+	    background-repeat: no-repeat;
+	}
+
+	.makModForm {
+	    display: block;
+	}
+
+	.dropdownmak {
+	    margin-bottom: 15px;
+	}
+
+	.dropdownmod {
+	    margin-bottom: 15px;
+	}
+
+	#researchV {
+	    margin-top: 15px;
+	}
+
+	#content1-left {
+	    margin-top: 50px;
+	}
+
+	.jumbotron {
+	    margin-bottom: 0px;
+	}
+
+	#div-gpt-mob-ad-2 {
+	    margin-top: 50px;
+	    margin-bottom: 50px;
+	}
+
+	.featuredArticleContent {
+	    margin-top: 15px;
+	}
+
+	.pubLogo {
+		margin-left: 15px;
+	}
+	.copyrightText{
+		font-size: 12px;
+	}
+	.bodystyleGrid{
+		margin-top: 25px;
+		width: 100%;
+		text-align: center;
+	}
 }
