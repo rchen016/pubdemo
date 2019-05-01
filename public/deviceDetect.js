@@ -35,7 +35,6 @@ $(document).ready(function() {
 	if(mainObj.isMobile){
 		console.log("Mobile");
 		googletag.cmd.push(function() {
-			googletag.pubads().enableSingleRequest();
 			googletag.enableServices();
 			for(var i=0;i<mainObj.adflowMob[mainObj.jamData["pubtemplate"]].length;i++){
 				console.log("div-gpt-ad-"+(i+1));
@@ -48,6 +47,7 @@ $(document).ready(function() {
 					googletag.display("div-gpt-mob-ad-"+(i+1));
 				});
 			}
+			googletag.pubads().enableSingleRequest();
 		});
 	}
 	else{
