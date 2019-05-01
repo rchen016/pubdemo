@@ -68,3 +68,36 @@
 .bottomestFooter{
 	color: #FFFFFF;
 }
+
+@media only screen and (max-width: 414px) {
+  body {
+    background-color: lightblue;
+  }
+  .swiper-slide-settings{
+	  background-size: 50% 50%;
+	  background-repeat: no-repeat;
+  }
+  .makModForm{
+	  display:block;
+  }
+  .dropdownmak{
+	  margin-bottom: 15px;
+  }
+  .dropdownmod{
+	  margin-bottom: 15px;
+  }
+  #researchV{
+	  margin-top: 15px;
+  }
+  #content1-left{
+	  margin-top: 50px;
+  }
+  .jumbotron{
+	  margin-bottom: 0px;
+  }
+
+  #div-gpt-mob-ad-2{
+	  margin-top: 50px;
+	  margin-bottom: 50px;
+  }
+}

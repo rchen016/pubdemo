@@ -1,6 +1,9 @@
 <% include ./partials/header %>
 	<script src="/swiperSlide.js"></script>
+	<script src="/deviceDetect.js"></script>
 	<script>
+		var width = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+		var height = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
 		var mainObj = {
 			isMobile: false,
 			device: "desktop",
@@ -22,25 +25,64 @@
 				"content": ""
 			}
 		};
-		googletag.cmd.push(function() {
-			googletag.defineSlot("/36117602/jam.pubdemo.home.dfp",[[728,90],[970,250],[970,90]], "div-gpt-ad-1")
-					.addService(googletag.pubads())
-					.setTargeting("prod",mainObj.jamData.prod)
-					.setTargeting("test",mainObj.jamData.test)
-					.setTargeting("yr",mainObj.jamData.yr);
-			googletag.defineSlot("/36117602/jam.pubdemo.home.dfp",[300,250], "div-gpt-ad-2")
-					.addService(googletag.pubads())
-					.setTargeting("prod",mainObj.jamData.prod)
-					.setTargeting("test",mainObj.jamData.test)
-					.setTargeting("yr",mainObj.jamData.yr);
-			googletag.defineSlot("/36117602/jam.pubdemo.home.dfp",[300,120], "div-gpt-ad-3")
-					.addService(googletag.pubads())
-					.setTargeting("prod",mainObj.jamData.prod)
-					.setTargeting("test",mainObj.jamData.test)
-					.setTargeting("yr",mainObj.jamData.yr);
-			googletag.pubads().enableSingleRequest();
-			googletag.enableServices();
-		});
+		if(width <= 414){
+			mainObj.isMobile = true;
+			mainObj.jamData["site"] = "jam.pubdemo.home.mob";
+		}
+		if(mainObj.isMobile){
+			console.log("Mobile");
+			googletag.cmd.push(function() {
+				googletag.defineSlot("/36117602/jam.pubdemo.home.mob",[[320,50],[300,250],[300,300]], "div-gpt-mob-ad-1")
+						.addService(googletag.pubads())
+						.setTargeting("prod",mainObj.jamData.prod)
+						.setTargeting("test",mainObj.jamData.test)
+						.setTargeting("yr",mainObj.jamData.yr);
+				googletag.defineSlot("/36117602/jam.pubdemo.home.mob",[[320,50],[300,250],[300,300],[320,51],[300,251],[300,301]], "div-gpt-mob-ad-2")
+						.addService(googletag.pubads())
+						.setTargeting("prod",mainObj.jamData.prod)
+						.setTargeting("test",mainObj.jamData.test)
+						.setTargeting("yr",mainObj.jamData.yr);
+				googletag.pubads().enableSingleRequest();
+				googletag.enableServices();
+				googletag.cmd.push(function() {
+					googletag.display("div-gpt-mob-ad-1");
+				});
+				googletag.cmd.push(function() {
+					googletag.display("div-gpt-mob-ad-2");
+				});
+			});
+		}
+		else{
+			console.log("Desktop");
+			googletag.cmd.push(function() {
+				googletag.defineSlot("/36117602/jam.pubdemo.home.dfp",[[728,90],[970,250],[970,90]], "div-gpt-ad-1")
+						.addService(googletag.pubads())
+						.setTargeting("prod",mainObj.jamData.prod)
+						.setTargeting("test",mainObj.jamData.test)
+						.setTargeting("yr",mainObj.jamData.yr);
+				googletag.defineSlot("/36117602/jam.pubdemo.home.dfp",[300,250], "div-gpt-ad-2")
+						.addService(googletag.pubads())
+						.setTargeting("prod",mainObj.jamData.prod)
+						.setTargeting("test",mainObj.jamData.test)
+						.setTargeting("yr",mainObj.jamData.yr);
+				googletag.defineSlot("/36117602/jam.pubdemo.home.dfp",[300,120], "div-gpt-ad-3")
+						.addService(googletag.pubads())
+						.setTargeting("prod",mainObj.jamData.prod)
+						.setTargeting("test",mainObj.jamData.test)
+						.setTargeting("yr",mainObj.jamData.yr);
+				googletag.pubads().enableSingleRequest();
+				googletag.enableServices();
+				googletag.cmd.push(function() {
+					googletag.display("div-gpt-ad-1");
+				});
+				googletag.cmd.push(function() {
+					googletag.display("div-gpt-ad-2");
+				});
+				googletag.cmd.push(function() {
+					googletag.display("div-gpt-ad-3");
+				});
+			});
+		}
 	</script>
 <!-- extending head container because of GPT -->
 </head>
@@ -51,20 +93,20 @@
 			<div class="container">
 				<div class="swiper-container">
 					<div class="swiper-wrapper">
-						<div class="swiper-slide" style="background-image:url(https://pubdemo.jumpstartauto.net/images/publisher_logos/white/publisher_car_and_driver.png)"></div>
-						<div class="swiper-slide" style="background-image:url(https://pubdemo.jumpstartauto.net/images/publisher_logos/white/publisher_road_and_track.png)"></div>
-						<div class="swiper-slide" style="background-image:url(https://pubdemo.jumpstartauto.net/images/publisher_logos/white/publisher_nadaguides.png)"></div>
-						<div class="swiper-slide" style="background-image:url(https://pubdemo.jumpstartauto.net/images/publisher_logos/white/publisher_autobytel.png)"></div>
-						<div class="swiper-slide" style="background-image:url(https://pubdemo.jumpstartauto.net/images/publisher_logos/white/publisher_carbuzz.png)"></div>
-						<div class="swiper-slide" style="background-image:url(https://pubdemo.jumpstartauto.net/images/publisher_logos/white/publisher_autoweek.png)"></div>
-						<div class="swiper-slide" style="background-image:url(https://pubdemo.jumpstartauto.net/images/publisher_logos/white/publisher_autolist.png)"></div>
-						<div class="swiper-slide" style="background-image:url(https://pubdemo.jumpstartauto.net/images/publisher_logos/white/publisher_usnews.png)"></div>
-						<div class="swiper-slide" style="background-image:url(https://pubdemo.jumpstartauto.net/images/publisher_logos/white/publisher_jdpower.png)"></div>
-						<div class="swiper-slide" style="background-image:url(https://pubdemo.jumpstartauto.net/images/publisher_logos/white/publisher_vehicle_history.png)"></div>
-						<div class="swiper-slide" style="background-image:url(https://pubdemo.jumpstartauto.net/images/publisher_logos/white/publisher_left_lane_news.png)"></div>
-						<div class="swiper-slide" style="background-image:url(https://pubdemo.jumpstartauto.net/images/publisher_logos/white/publisher_carstory.png)"></div>
-						<div class="swiper-slide" style="background-image:url(https://pubdemo.jumpstartauto.net/images/publisher_logos/white/publisher_iseecars.png)"></div>
-						<div class="swiper-slide" style="background-image:url(https://pubdemo.jumpstartauto.net/images/publisher_logos/white/publisher_carpages.png)"></div>
+						<div class="swiper-slide swiper-slide-settings" style="background-image:url(https://pubdemo.jumpstartauto.net/images/publisher_logos/white/publisher_car_and_driver.png)"></div>
+						<div class="swiper-slide swiper-slide-settings" style="background-image:url(https://pubdemo.jumpstartauto.net/images/publisher_logos/white/publisher_road_and_track.png)"></div>
+						<div class="swiper-slide swiper-slide-settings" style="background-image:url(https://pubdemo.jumpstartauto.net/images/publisher_logos/white/publisher_nadaguides.png)"></div>
+						<div class="swiper-slide swiper-slide-settings" style="background-image:url(https://pubdemo.jumpstartauto.net/images/publisher_logos/white/publisher_autobytel.png)"></div>
+						<div class="swiper-slide swiper-slide-settings" style="background-image:url(https://pubdemo.jumpstartauto.net/images/publisher_logos/white/publisher_carbuzz.png)"></div>
+						<div class="swiper-slide swiper-slide-settings" style="background-image:url(https://pubdemo.jumpstartauto.net/images/publisher_logos/white/publisher_autoweek.png)"></div>
+						<div class="swiper-slide swiper-slide-settings" style="background-image:url(https://pubdemo.jumpstartauto.net/images/publisher_logos/white/publisher_autolist.png)"></div>
+						<div class="swiper-slide swiper-slide-settings" style="background-image:url(https://pubdemo.jumpstartauto.net/images/publisher_logos/white/publisher_usnews.png)"></div>
+						<div class="swiper-slide swiper-slide-settings" style="background-image:url(https://pubdemo.jumpstartauto.net/images/publisher_logos/white/publisher_jdpower.png)"></div>
+						<div class="swiper-slide swiper-slide-settings" style="background-image:url(https://pubdemo.jumpstartauto.net/images/publisher_logos/white/publisher_vehicle_history.png)"></div>
+						<div class="swiper-slide swiper-slide-settings" style="background-image:url(https://pubdemo.jumpstartauto.net/images/publisher_logos/white/publisher_left_lane_news.png)"></div>
+						<div class="swiper-slide swiper-slide-settings" style="background-image:url(https://pubdemo.jumpstartauto.net/images/publisher_logos/white/publisher_carstory.png)"></div>
+						<div class="swiper-slide swiper-slide-settings" style="background-image:url(https://pubdemo.jumpstartauto.net/images/publisher_logos/white/publisher_iseecars.png)"></div>
+						<div class="swiper-slide swiper-slide-settings" style="background-image:url(https://pubdemo.jumpstartauto.net/images/publisher_logos/white/publisher_carpages.png)"></div>
 					</div>
 					<!-- Add Pagination -->
 					<div class="swiper-pagination"></div>
@@ -73,24 +115,23 @@
 		</div>
 	</div>
 	<div class="container">
-		<div class="d-flex justify-content-center" id="jam_728x90">
+		<div class="d-flex justify-content-center .d-sm-none .d-md-block" id="jam_728x90">
 			<div id="div-gpt-ad-1">
-			    <script>
-			        googletag.cmd.push(function() {
-			            googletag.display("div-gpt-ad-1");
-			        });
-			    </script>
 			</div>
 		</div>
 	</div>
 	<div id="mainblock" class="container">
+		<div id="div-gpt-mob-ad-1" class="d-flex justify-content-center">
+
+		</div>
+
 		<div class="row">
 			<div id="content1-left" class="col-md-8 col-sm-7">
 				<h1>Ad Flow - Awareness #1</h1>
 				<div class="panel panel-default">
 					<div class="panel-body">Made up of the Homepage and Navigational Landing Pages. Homepage is the entry point into the site. Navigational Landing Pages are any landing page where featuring editorial content that is not specific to a make, model, or body style. Includes the Suggestive Selling Menu and Xcelerate in addition to standard ad flow.</div>
 				</div>
-				<h2>Research Vehicles</h2>
+				<h2 id="researchV">Research Vehicles</h2>
 				<div class="browseCars">
 					<p>By Make and Model</p>
 					<div class="makModForm form-check-inline">
@@ -114,7 +155,7 @@
 						        <a class="dropdown-item" href="#">Model3</a>
 						    </div>
 						</div>
-						<button type="button" class="btn btn-dark col-md-2 btn-outline-secondary"><span id="browseBtn">Browse</span></button>
+						<button type="button" class="btn btn-dark col-md-2 btn-outline-secondary browseBtn"><span id="browseBtn">Browse</span></button>
 					</div>
 						<div class="row bodystyleGrid">
 							<div class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
@@ -209,29 +250,15 @@
 							</div>
 						</div>
 						<hr />
-						<!-- <div class="row">
-							<div class="col-2"><img style="width:100%" src="https://i.imgur.com/94ph34X.png" /></div>
-							<div class="col-2"><img style="width:100%" src="https://i.imgur.com/94ph34X.png" /></div>
-							<div class="col-2"><img style="width:100%" src="https://i.imgur.com/94ph34X.png" /></div>
-							<div class="col-2"><img style="width:100%" src="https://i.imgur.com/94ph34X.png" /></div>
-							<div class="col-2"><img style="width:100%" src="https://i.imgur.com/94ph34X.png" /></div>
-							<div class="col-2"><img style="width:100%" src="https://i.imgur.com/94ph34X.png" /></div>
-						</div>
-						<div class="row">
-							<div class="col-2"><img style="width:100%" src="https://i.imgur.com/94ph34X.png" /></div>
-							<div class="col-2"><img style="width:100%" src="https://i.imgur.com/94ph34X.png" /></div>
-							<div class="col-2"><img style="width:100%" src="https://i.imgur.com/94ph34X.png" /></div>
-							<div class="col-2"><img style="width:100%" src="https://i.imgur.com/94ph34X.png" /></div>
-							<div class="col-2"><img style="width:100%" src="https://i.imgur.com/94ph34X.png" /></div>
-							<div class="col-2"><img style="width:100%" src="https://i.imgur.com/94ph34X.png" /></div>
-						</div> -->
+				</div>
+				<div class="d-flex justify-content-center" id="div-gpt-mob-ad-2">
+
 				</div>
 				<div class="featured-articles">
 						<h3>Featured Articles</h3>
 						<p>
 							Bacon ipsum dolor amet shank
 						</p>
-						<!-- https://i.imgur.com/hJrgATi.gif -->
 				</div>
 				<div class="content-bottom">
 					<div class="row">
@@ -296,21 +323,11 @@
 			</div>
 			<div id="content1-right" class="col-md-4 col-sm-5">
 				<div class="d-flex justify-content-center" id="jam_300x250">
-					<div id="div-gpt-ad-2" style="width: 300px; height: 250px">
-					    <script>
-					        googletag.cmd.push(function() {
-					            googletag.display("div-gpt-ad-2");
-					        });
-					    </script>
+					<div id="div-gpt-ad-2">
 					</div>
 				</div>
 				<div class="d-flex justify-content-center" id="jam_300x120">
-					<div id="div-gpt-ad-3" style="width: 300px; height: 120px">
-					    <script>
-					        googletag.cmd.push(function() {
-					            googletag.display("div-gpt-ad-3");
-					        });
-					    </script>
+					<div id="div-gpt-ad-3">
 					</div>
 				</div>
 			</div>
