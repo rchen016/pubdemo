@@ -49,7 +49,7 @@ $(document).ready(function() {
 			googletag.enableServices();
 			//googletag.pubads().enableSingleRequest();
 		});
-		for(var i = 0;i < mainObj.adflowDesk[mainObj.jamData["pubtemplate"]].length;i++){
+		for(var i = 0;i < mainObj.adflowMob[mainObj.jamData["pubtemplate"]].length;i++){
 		    (function(){
 		        var ii = i;
 		        setTimeout(function(){
