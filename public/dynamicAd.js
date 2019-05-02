@@ -14,7 +14,7 @@ globallyAccessibleNamespace.debug = true;
 
         // bind proximity events to all placeholders
         $("div.dynamic-ad-proximity-load").each(function() {
-
+			console.log("adding binding");
 			var $ele = $(this);
 
 			// setting up to trigger $(window).trigger('enterviewport', $ele), 200px BEFORE it actually enters the viewport
@@ -41,10 +41,10 @@ globallyAccessibleNamespace.debug = true;
                     // MAKE AD CALLS HERE!
                     params.$ele.data('adloaded', true );
 
-					if (globallyAccessibleNamespace.debug) {
-						console.log('[jPat][dynAd] - MAKING AD CALL...');
-						console.log('[jPat][dynAd] ID: ' + params.$ele.context.attributes['data-ad-placeholder'].value + ' -- Width: ' + params.$ele.context.attributes['data-ad-width'].value + ' -- Height: ' + params.$ele.context.attributes['data-ad-height'].value + ' -- Window Height: ' + params.$ele.context.offsetTop);
-					}
+					// if (globallyAccessibleNamespace.debug) {
+					// 	console.log('[jPat][dynAd] - MAKING AD CALL...');
+					// 	console.log('[jPat][dynAd] ID: ' + params.$ele.context.attributes['data-ad-placeholder'].value + ' -- Width: ' + params.$ele.context.attributes['data-ad-width'].value + ' -- Height: ' + params.$ele.context.attributes['data-ad-height'].value + ' -- Window Height: ' + params.$ele.context.offsetTop);
+					// }
 
 					if (params.$ele.context.attributes['data-ad-width'].value == '300' && params.$ele.context.attributes['data-ad-height'].value == '250') {
 
@@ -82,7 +82,7 @@ globallyAccessibleNamespace.debug = true;
 				}
 
 				// Google Analytics Event Tracking - Ad Loaded
-				ga('send', 'event', 'Ad Flow', 'Dynamic Ad Viewed', params.$ele.context.attributes['data-ad-placeholder'].value);
+				//ga('send', 'event', 'Ad Flow', 'Dynamic Ad Viewed', params.$ele.context.attributes['data-ad-placeholder'].value);
 
                 if ( params.$ele.data('adloaded') === true && params.$ele.data('adviewed') !== true ) {
 
