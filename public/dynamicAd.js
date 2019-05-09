@@ -37,7 +37,7 @@ globallyAccessibleNamespace.debug = true;
 				}
 
                 if ( params.$ele.data('adloaded') !== true ) {
-
+					console.log("jw1");
                     // MAKE AD CALLS HERE!
                     params.$ele.data('adloaded', true );
 
@@ -45,20 +45,20 @@ globallyAccessibleNamespace.debug = true;
 					// 	console.log('[jPat][dynAd] - MAKING AD CALL...');
 					// 	console.log('[jPat][dynAd] ID: ' + params.$ele.context.attributes['data-ad-placeholder'].value + ' -- Width: ' + params.$ele.context.attributes['data-ad-width'].value + ' -- Height: ' + params.$ele.context.attributes['data-ad-height'].value + ' -- Window Height: ' + params.$ele.context.offsetTop);
 					// }
-
+					console.log("jw2");
 					if (params.$ele.context.attributes['data-ad-width'].value == '300' && params.$ele.context.attributes['data-ad-height'].value == '250') {
-
+						console.log("jw3");
 						// AD CALL - called from gpt_ads.js
 						// addDynamicAd(divId, width, height, device)
 						addDynamicAd(params.$ele.context.attributes['data-ad-placeholder'].value, params.$ele.context.attributes['data-ad-width'].value, params.$ele.context.attributes['data-ad-height'].value, params.$ele.context.attributes['data-ad-device'].value);
 
 					}
-
+					console.log("jw4");
 					//
 					// FOR DEMO PURPOSES ONLY - REMOVE FOR PRODUCTION
 					//
 					if (params.$ele.context.attributes['data-ad-width'].value == '728' && params.$ele.context.attributes['data-ad-height'].value == '90') {
-
+						console.log("jw5");
 						// AD CALL - DEMO ONLY - called from gpt_ads.js
 						// addInfinity728Ad(divId, width, height, device)
 						addInfinity728Ad(params.$ele.context.attributes['data-ad-placeholder'].value, params.$ele.context.attributes['data-ad-width'].value, params.$ele.context.attributes['data-ad-height'].value, params.$ele.context.attributes['data-ad-device'].value);
@@ -70,13 +70,13 @@ globallyAccessibleNamespace.debug = true;
 
 					// Google Analytics Event Tracking - Ad Called
 					//ga('send', 'event', 'Ad Flow', 'Dynamic Ad Being Called', params.$ele.context.attributes['data-ad-placeholder'].value);
-
+					console.log("jw6");
                 }
             })
 
             // functionality for anything needing to be done when the element has been viewed
             .on('adviewed', function ( e, params ) {
-
+				console.log("jw7");
 				if (globallyAccessibleNamespace.debug) {
 					console.log('[jPat][dynAd] ad viewed...');
 				}
@@ -85,7 +85,7 @@ globallyAccessibleNamespace.debug = true;
 				//ga('send', 'event', 'Ad Flow', 'Dynamic Ad Viewed', params.$ele.context.attributes['data-ad-placeholder'].value);
 
                 if ( params.$ele.data('adloaded') === true && params.$ele.data('adviewed') !== true ) {
-
+					console.log("jw8");
                     // CALLS FOR WHEN YOUR ADD IS VIEWED
                     params.$ele.data('adviewed', true);
 

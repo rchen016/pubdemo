@@ -1,6 +1,12 @@
 $(document).ready(function() {
-	console.log("Start");
 	//globallyAccessibleNamespace.dynamicAd();
+// 	var debounce = require('debounce');
+// 	window.onresize = debounce(resize, 200);
+//
+// function resize(e) {
+//   console.log('height', window.innerHeight);
+//   console.log('width', window.innerWidth);
+// }
     var width = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
 	var height = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
 	var mainObj = {
@@ -38,7 +44,6 @@ $(document).ready(function() {
 		console.log("Mobile");
 		googletag.cmd.push(function() {
 			for(var i=0;i<mainObj.adflowMob[mainObj.jamData["pubtemplate"]].length;i++){
-				console.log("div-gpt-ad-"+(i+1));
 				googletag.defineSlot("/36117602/jam.pubdemo.home.mob",mainObj.adflowMob[mainObj.jamData["pubtemplate"]][i], "div-gpt-mob-ad-"+(i+1))
 						.addService(googletag.pubads())
 						.setTargeting("prod",mainObj.jamData.prod)
@@ -46,20 +51,17 @@ $(document).ready(function() {
 						.setTargeting("yr",mainObj.jamData.yr)
 						.setTargeting("jamtest","rickydemo");
 			}
+			googletag.pubads().enableSingleRequest();
 			googletag.enableServices();
-			//googletag.pubads().enableSingleRequest();
-		});
-		for(var i = 0;i < mainObj.adflowMob[mainObj.jamData["pubtemplate"]].length;i++){
-		    (function(){
-		        var ii = i;
-		        setTimeout(function(){
-					console.log("div-gpt-ad-"+(ii+1));
-		            googletag.cmd.push(function() {
+			for(var i = 0;i < mainObj.adflowMob[mainObj.jamData["pubtemplate"]].length;i++){
+			    (function(){
+			        var ii = i;
+			        setTimeout(function(){
 						googletag.display("div-gpt-mob-ad-"+(ii+1));
-					});
-		        },100);
-		    })();
-		}
+			        },100);
+			    })();
+			}
+		});
 	}
 	else{
 		console.log("Desktop");
@@ -73,20 +75,17 @@ $(document).ready(function() {
 						.setTargeting("yr",mainObj.jamData.yr)
 						.setTargeting("jamtest","rickydemo");
 			}
+			googletag.pubads().enableSingleRequest();
 			googletag.enableServices();
-			//googletag.pubads().enableSingleRequest();
-		});
-
-		for(var i = 0;i < mainObj.adflowDesk[mainObj.jamData["pubtemplate"]].length;i++){
-		    (function(){
-		        var ii = i;
-		        setTimeout(function(){
-					console.log("div-gpt-ad-"+(ii+1));
-		            googletag.cmd.push(function() {
+			for(var i = 0;i < mainObj.adflowDesk[mainObj.jamData["pubtemplate"]].length;i++){
+			    (function(){
+			        var ii = i;
+			        setTimeout(function(){
 						googletag.display("div-gpt-ad-"+(ii+1));
-					});
-		        },100);
-		    })();
-		}
+			        },100);
+			    })();
+			}
+		});
 	}
+	//globallyAccessibleNamespace.dynamicAd();
 });
