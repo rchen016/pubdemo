@@ -1,18 +1,42 @@
 $(document).ready(function() {
-	//globallyAccessibleNamespace.dynamicAd();
-// 	var debounce = require('debounce');
-// 	window.onresize = debounce(resize, 200);
-//
-// function resize(e) {
-//   console.log('height', window.innerHeight);
-//   console.log('width', window.innerWidth);
-// }
+
+
     var width = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
 	var height = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+	var sitesection = document.querySelector("meta[name='sitesection']").getAttribute("content")
 	var mainObj = {
 		isMobile: false,
-		device: "desktop",
+		device: "n/a",
 		jamData: {
+			"sitename": "",
+			"site": "",
+			"adunit": "",
+			"prod": "",
+			"subprod": "",
+			"yr": "",
+			"mak": "",
+			"mod": "",
+			"type": "",
+			"style": "",
+			"fuel": "",
+			"pub": "",
+			"pubtemplate": "",
+			"test": "",
+			"content": ""
+		},
+		adflowDesk: {
+			"homepage": [[[728,90],[970,250],[970,90]],[300,250],[300,120]],
+			"category": [[728,90],[[300,250],[300,600]],[[300,251],[300,250]],[643,247]]
+		},
+		adflowMob:{
+			"homepage": [[[320,50],[300,250],[300,300]],[[320,50],[300,250],[300,300],[320,51],[300,251],[300,301]]],
+			"category": [[[320,50],[300,250],[300,300]],[[320,50],[300,250],[300,300],[320,51],[300,251],[300,301]]]
+		}
+	};
+	//determine site section
+	if(sitesection=="homepage"){
+		console.log("homepage page");
+		mainObj.jamData = {
 			"sitename": "pubdemo.jumpstartauto.net",
 			"site": "jam.pubdemo.home.dfp",
 			"adunit": "",
@@ -28,14 +52,33 @@ $(document).ready(function() {
 			"pubtemplate": "homepage",
 			"test": "jumpstart",
 			"content": ""
-		},
-		adflowDesk: {
-			"homepage": [[[728,90],[970,250],[970,90]],[300,250],[300,120]]
-		},
-		adflowMob:{
-			"homepage": [[[320,50],[300,250],[300,300]],[[320,50],[300,250],[300,300],[320,51],[300,251],[300,301]]]
 		}
-	};
+	}
+	else if(sitesection=="category"){
+		console.log("category page");
+		mainObj.jamData = {
+			"sitename": "pubdemo.jumpstartauto.net",
+			"site": "jam.pubdemo.new.dfp",
+			"adunit": "/bg/ct",
+			"prod": "buyersguide",
+			"subprod": "",
+			"yr": "2019",
+			"mak": "",
+			"mod": "",
+			"type": "",
+			"style": "",
+			"fuel": "",
+			"pub": "jumpstart",
+			"pubtemplate": "category",
+			"test": "jumpstart",
+			"content": ""
+		}
+	}else{
+		console.log("unfound sitesection");
+	}
+
+
+	//Determine mobile desktop
 	if(width <= 414){
 		mainObj.isMobile = true;
 		mainObj.jamData["site"] = "jam.pubdemo.home.mob";
@@ -43,13 +86,21 @@ $(document).ready(function() {
 	if(mainObj.isMobile){
 		console.log("Mobile");
 		googletag.cmd.push(function() {
+			googletag.pubads()
+				.setTargeting("prod",mainObj.jamData.prod)
+				.setTargeting("subprod",mainObj.jamData.subprod)
+				.setTargeting("pub",mainObj.jamData.pub)
+				.setTargeting("fuel",mainObj.jamData.fuel)
+				.setTargeting("type",mainObj.jamData.type)
+				.setTargeting("style",mainObj.jamData.style)
+				.setTargeting("mak",mainObj.jamData.mak)
+				.setTargeting("mod",mainObj.jamData.mod)
+				.setTargeting("yr",mainObj.jamData.yr)
+				.setTargeting("test",mainObj.jamData.test)
+				.setTargeting("jamtest","rickydemo");
 			for(var i=0;i<mainObj.adflowMob[mainObj.jamData["pubtemplate"]].length;i++){
-				googletag.defineSlot("/36117602/jam.pubdemo.home.mob",mainObj.adflowMob[mainObj.jamData["pubtemplate"]][i], "div-gpt-mob-ad-"+(i+1))
-						.addService(googletag.pubads())
-						.setTargeting("prod",mainObj.jamData.prod)
-						.setTargeting("test",mainObj.jamData.test)
-						.setTargeting("yr",mainObj.jamData.yr)
-						.setTargeting("jamtest","rickydemo");
+				googletag.defineSlot("/36117602/"+mainObj.jamData.site+mainObj.jamData.adunit,mainObj.adflowMob[mainObj.jamData["pubtemplate"]][i], "div-gpt-mob-ad-"+(i+1))
+						.addService(googletag.pubads());
 			}
 			googletag.pubads().enableSingleRequest();
 			googletag.enableServices();
@@ -66,14 +117,22 @@ $(document).ready(function() {
 	else{
 		console.log("Desktop");
 		googletag.cmd.push(function() {
+			googletag.pubads()
+				.setTargeting("prod",mainObj.jamData.prod)
+				.setTargeting("subprod",mainObj.jamData.subprod)
+				.setTargeting("pub",mainObj.jamData.pub)
+				.setTargeting("fuel",mainObj.jamData.fuel)
+				.setTargeting("type",mainObj.jamData.type)
+				.setTargeting("style",mainObj.jamData.style)
+				.setTargeting("mak",mainObj.jamData.mak)
+				.setTargeting("mod",mainObj.jamData.mod)
+				.setTargeting("yr",mainObj.jamData.yr)
+				.setTargeting("test",mainObj.jamData.test)
+				.setTargeting("jamtest","rickydemo");
 			for(var i=0;i<mainObj.adflowDesk[mainObj.jamData["pubtemplate"]].length;i++){
 				console.log("div-gpt-ad-"+(i+1));
-				googletag.defineSlot("/36117602/jam.pubdemo.home.dfp",mainObj.adflowDesk[mainObj.jamData["pubtemplate"]][i], "div-gpt-ad-"+(i+1))
-						.addService(googletag.pubads())
-						.setTargeting("prod",mainObj.jamData.prod)
-						.setTargeting("test",mainObj.jamData.test)
-						.setTargeting("yr",mainObj.jamData.yr)
-						.setTargeting("jamtest","rickydemo");
+				googletag.defineSlot("/36117602/"+mainObj.jamData.site+mainObj.jamData.adunit,mainObj.adflowDesk[mainObj.jamData["pubtemplate"]][i], "div-gpt-ad-"+(i+1))
+						.addService(googletag.pubads());
 			}
 			googletag.pubads().enableSingleRequest();
 			googletag.enableServices();

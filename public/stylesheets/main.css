@@ -104,6 +104,10 @@ html, body {
 .articleImg{
 	width: 100%;
 }
+.navbar{
+	margin-bottom: 20px;
+}
+
 @media only screen and (max-width: 414px) {
 	.swiper-slide-settings {
 	    background-size: 50% 50%;
@@ -156,5 +160,11 @@ html, body {
 	}
 	.divyBar{
 		display:block;
+	}
+	.navbar{
+		margin-bottom: 0px;
+	}
+	.catMobTier1{
+		margin-top: 70px;
 	}
 }
