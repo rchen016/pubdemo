@@ -107,7 +107,23 @@ html, body {
 .navbar{
 	margin-bottom: 20px;
 }
-
+.browseBtnCat{
+	width:100%;
+	margin-top: 10px;
+}
+.makModText{
+	margin-top: 10px;
+	text-align: center;
+}
+.dropdownmakCat{
+	margin-bottom: 10px;
+}
+#content1-right-cat{
+	text-align: center;
+}
+.dropdownmenuCat{
+	width: 100%;
+}
 @media only screen and (max-width: 414px) {
 	.swiper-slide-settings {
 	    background-size: 50% 50%;
