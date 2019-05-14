@@ -15,6 +15,10 @@ app.get("/categorylanding",function(req,res){
 	res.render("categorylanding");
 });
 
+app.get("/modelpage",function(req,res){
+	res.render("modelpage");
+});
+
 app.listen(process.env.PORT||3000, process.env.IP, function(){
   console.log("Server Up...");
 });

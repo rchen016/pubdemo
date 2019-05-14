@@ -126,6 +126,45 @@ html, body {
 .dropdownmenuCat{
 	width: 100%;
 }
+#researchV{
+	margin-top: 15px;
+}
+.dotRated {
+  height: 15px;
+  width: 15px;
+  background-color: #383838;
+  border-radius: 50%;
+  display: inline-block;
+}
+.dotNotRated {
+  height: 15px;
+  width: 15px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+}
+.ratingbox{
+	margin-top: 10px;
+}
+.carModelImg{
+	max-width: 677px;
+}
+.considerText{
+	font-size: 12px;
+}
+.centerThat{
+	text-align: center;
+}
+.borderless{
+	border: 0;
+}
+.considerOther{
+	margin-top: 40px;
+	margin-bottom: 40px;
+}
+.a{
+	color: #000 !important;
+}
 @media only screen and (max-width: 414px) {
 	.swiper-slide-settings {
 	    background-size: 50% 50%;
