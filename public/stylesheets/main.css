@@ -2,7 +2,9 @@
 	min-height: 285px;
 }
 html, body {
-  overflow-x:hidden
+  overflow-x:hidden;
+  margin: 0;
+  padding: 0;
 }
 .swiper-container {
 	width: 100%;
