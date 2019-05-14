@@ -80,7 +80,6 @@ $(document).ready(function() {
 		mainObj.jamData["site"] = "jam.pubdemo.home.mob";
 	}
 	if(mainObj.isMobile){
-		console.log("Mobile");
 		googletag.cmd.push(function() {
 			googletag.pubads()
 				.setTargeting("prod",mainObj.jamData.prod)
@@ -111,7 +110,6 @@ $(document).ready(function() {
 		});
 	}
 	else{
-		console.log("Desktop");
 		googletag.cmd.push(function() {
 			googletag.pubads()
 				.setTargeting("prod",mainObj.jamData.prod)
