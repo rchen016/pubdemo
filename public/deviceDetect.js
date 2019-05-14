@@ -28,6 +28,16 @@ $(document).ready(function() {
 			"category": [[728,90],[[300,250],[300,600]],[[300,251],[300,250]]],
 			"model": [[728,90],[[300,250],[300,600]],[[300,251],[300,250]],[400,40]]
 		},
+		deskSlotValue:{
+			"homepage": ["dt-wide-top","dt-box-1","spotlight"],
+			"category": ["dt-wide-top","dt-box-1","dt-box-2"],
+			"model": ["dt-wide-top","dt-box-1","dt-box-2","dt-shopping-link"]
+		},
+		mobSlotValue:{
+			"homepage": ["m-box-1","m-box-2"],
+			"category": ["m-box-1","m-box-2"],
+			"model": ["m-box-1","m-box-2"]
+		},
 		adflowMob:{
 			"homepage": [[[320,50],[300,250],[300,300]],[[320,50],[300,250],[300,300],[320,51],[300,251],[300,301]]],
 			"category": [[[320,50],[300,250],[300,300]],[[320,50],[300,250],[300,300],[320,51],[300,251],[300,301]]],
@@ -118,7 +128,9 @@ $(document).ready(function() {
 				.setTargeting("jamtest","rickydemo");
 			for(var i=0;i<mainObj.adflowMob[mainObj.jamData["pubtemplate"]].length;i++){
 				googletag.defineSlot("/36117602/"+mainObj.jamData.site+mainObj.jamData.adunit,mainObj.adflowMob[mainObj.jamData["pubtemplate"]][i], "div-gpt-mob-ad-"+(i+1))
-						.addService(googletag.pubads());
+						.addService(googletag.pubads())
+						.setTargeting("slot",mainObj.mobSlotValue[mainObj.jamData["pubtemplate"]][i]);
+
 			}
 			googletag.pubads().enableSingleRequest();
 			googletag.enableServices();
@@ -148,7 +160,8 @@ $(document).ready(function() {
 				.setTargeting("jamtest","rickydemo");
 			for(var i=0;i<mainObj.adflowDesk[mainObj.jamData["pubtemplate"]].length;i++){
 				googletag.defineSlot("/36117602/"+mainObj.jamData.site+mainObj.jamData.adunit,mainObj.adflowDesk[mainObj.jamData["pubtemplate"]][i], "div-gpt-ad-"+(i+1))
-						.addService(googletag.pubads());
+						.addService(googletag.pubads())
+						.setTargeting("slot",mainObj.deskSlotValue[mainObj.jamData["pubtemplate"]][i]);
 			}
 			googletag.pubads().enableSingleRequest();
 			googletag.enableServices();
