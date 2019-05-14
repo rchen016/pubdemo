@@ -259,4 +259,7 @@ html, body {
 	.considerTextHeader{
 		font-size: 14px;
 	}
+	#jam_728x90{
+		display:none !important;
+	}
 }
