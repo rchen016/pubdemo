@@ -24,6 +24,7 @@ html, body {
 }
 
 #jam_728x90{
+	margin-top: 40px;
 	margin-bottom: 50px;
 }
 
@@ -108,12 +109,13 @@ html, body {
 .articleImg{
 	width: 100%;
 }
-.navbar{
-	margin-bottom: 20px;
-}
+
 .browseBtnCat{
 	width:100%;
 	margin-top: 10px;
+}
+.ad728x90{
+	margin-top: 50px;
 }
 .makModText{
 	margin-top: 10px;
