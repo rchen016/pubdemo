@@ -250,6 +250,9 @@ html, body {
 	.catMobTier1{
 		margin-top: 70px;
 	}
+	.catMobTier12{
+		margin-top: 50px;
+	}
 	.carModelImg{
 		max-width: 338.5px;
 	}
@@ -261,5 +264,8 @@ html, body {
 	}
 	#jam_728x90{
 		display:none !important;
+	}
+	.bottomFooter{
+		height: 683px;
 	}
 }
