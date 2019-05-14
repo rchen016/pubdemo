@@ -1,3 +1,4 @@
+var jamData;
 $(document).ready(function() {
     var width = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
 	var height = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
@@ -24,11 +25,13 @@ $(document).ready(function() {
 		},
 		adflowDesk: {
 			"homepage": [[[728,90],[970,250],[970,90]],[300,250],[300,120]],
-			"category": [[728,90],[[300,250],[300,600]],[[300,251],[300,250]]]
+			"category": [[728,90],[[300,250],[300,600]],[[300,251],[300,250]]],
+			"model": [[728,90],[[300,250],[300,600]],[[300,251],[300,250]],[400,40]]
 		},
 		adflowMob:{
 			"homepage": [[[320,50],[300,250],[300,300]],[[320,50],[300,250],[300,300],[320,51],[300,251],[300,301]]],
-			"category": [[[320,50],[300,250],[300,300]],[[320,50],[300,250],[300,300],[320,51],[300,251],[300,301]]]
+			"category": [[[320,50],[300,250],[300,300]],[[320,50],[300,250],[300,300],[320,51],[300,251],[300,301]]],
+			"model": [[[320,50],[300,250],[300,300]],[[320,50],[300,250],[300,300],[320,51],[300,251],[300,301]]]
 		}
 	};
 	//determine site section
@@ -69,7 +72,27 @@ $(document).ready(function() {
 			"test": "jumpstart",
 			"content": ""
 		}
-	}else{
+	}
+	else if(sitesection=="model"){
+		mainObj.jamData = {
+			"sitename": "pubdemo.jumpstartauto.net",
+			"site": "jam.pubdemo.new.dfp",
+			"adunit": "/bg/mod",
+			"prod": "buyersguide",
+			"subprod": "",
+			"yr": "2019",
+			"mak": "",
+			"mod": "",
+			"type": "categorylanding",
+			"style": "",
+			"fuel": "",
+			"pub": "jumpstart",
+			"pubtemplate": "model",
+			"test": "jumpstart",
+			"content": ""
+		}
+	}
+	else{
 		console.log("unfound sitesection");
 	}
 
@@ -140,4 +163,5 @@ $(document).ready(function() {
 		});
 	}
 	//globallyAccessibleNamespace.dynamicAd();
+	jamData = mainObj.jamData;
 });
