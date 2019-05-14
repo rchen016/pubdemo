@@ -1,6 +1,4 @@
 $(document).ready(function() {
-
-
     var width = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
 	var height = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
 	var sitesection = document.querySelector("meta[name='sitesection']").getAttribute("content")
@@ -35,7 +33,6 @@ $(document).ready(function() {
 	};
 	//determine site section
 	if(sitesection=="homepage"){
-		console.log("homepage page");
 		mainObj.jamData = {
 			"sitename": "pubdemo.jumpstartauto.net",
 			"site": "jam.pubdemo.home.dfp",
@@ -55,7 +52,6 @@ $(document).ready(function() {
 		}
 	}
 	else if(sitesection=="category"){
-		console.log("category page");
 		mainObj.jamData = {
 			"sitename": "pubdemo.jumpstartauto.net",
 			"site": "jam.pubdemo.new.dfp",
@@ -130,7 +126,6 @@ $(document).ready(function() {
 				.setTargeting("test",mainObj.jamData.test)
 				.setTargeting("jamtest","rickydemo");
 			for(var i=0;i<mainObj.adflowDesk[mainObj.jamData["pubtemplate"]].length;i++){
-				console.log("div-gpt-ad-"+(i+1));
 				googletag.defineSlot("/36117602/"+mainObj.jamData.site+mainObj.jamData.adunit,mainObj.adflowDesk[mainObj.jamData["pubtemplate"]][i], "div-gpt-ad-"+(i+1))
 						.addService(googletag.pubads());
 			}
