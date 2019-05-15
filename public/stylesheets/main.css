@@ -63,9 +63,10 @@ html, body {
 }
 
 .pubLogo{
+	max-width: 100px;
 	display: inline-block;
 	margin-right: 50px;
-	width: 114px;
+	width: 100px;
 	text-align: center !important;
 	box-sizing: content-box;
 	padding: 15px 2.2%;
@@ -185,7 +186,11 @@ html, body {
 	width: 100%;
 }
 
-
+@media only screen and (max-width: 375px) {
+	.pubLogo{
+		max-width: 91px;
+	}
+}
 @media only screen and (max-width: 414px) {
 	.swiper-slide-settings {
 	    background-size: 50% 50%;
@@ -269,6 +274,6 @@ html, body {
 		margin-bottom: 0px;
 	}
 	.bottomFooter{
-		height: 683px;
+		height: 720px;
 	}
 }
