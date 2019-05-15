@@ -130,7 +130,6 @@ $(document).ready(function() {
 				googletag.defineSlot("/36117602/"+mainObj.jamData.site+mainObj.jamData.adunit,mainObj.adflowMob[mainObj.jamData["pubtemplate"]][i], "div-gpt-mob-ad-"+(i+1))
 						.addService(googletag.pubads())
 						.setTargeting("slot",mainObj.mobSlotValue[mainObj.jamData["pubtemplate"]][i]);
-
 			}
 			googletag.pubads().enableSingleRequest();
 			googletag.enableServices();
@@ -159,9 +158,18 @@ $(document).ready(function() {
 				.setTargeting("test",mainObj.jamData.test)
 				.setTargeting("jamtest","rickydemo");
 			for(var i=0;i<mainObj.adflowDesk[mainObj.jamData["pubtemplate"]].length;i++){
-				googletag.defineSlot("/36117602/"+mainObj.jamData.site+mainObj.jamData.adunit,mainObj.adflowDesk[mainObj.jamData["pubtemplate"]][i], "div-gpt-ad-"+(i+1))
-						.addService(googletag.pubads())
-						.setTargeting("slot",mainObj.deskSlotValue[mainObj.jamData["pubtemplate"]][i]);
+				console.log(String(mainObj.adflowDesk[mainObj.jamData["pubtemplate"]][i]));
+				if(String(mainObj.adflowDesk[mainObj.jamData["pubtemplate"]][i])=="400,40"){
+					//Shopping link case
+					googletag.defineSlot("/36117602/"+mainObj.jamData.site+mainObj.jamData.adunit,mainObj.adflowDesk[mainObj.jamData["pubtemplate"]][i], "div-gpt-ad-"+(i+1))
+							.addService(googletag.pubads())
+							.setTargeting("slcss","horizontal")
+							.setTargeting("slot",mainObj.deskSlotValue[mainObj.jamData["pubtemplate"]][i]);
+				}else{
+					googletag.defineSlot("/36117602/"+mainObj.jamData.site+mainObj.jamData.adunit,mainObj.adflowDesk[mainObj.jamData["pubtemplate"]][i], "div-gpt-ad-"+(i+1))
+							.addService(googletag.pubads())
+							.setTargeting("slot",mainObj.deskSlotValue[mainObj.jamData["pubtemplate"]][i]);
+				}
 			}
 			googletag.pubads().enableSingleRequest();
 			googletag.enableServices();
