@@ -7,6 +7,8 @@ var express = require("express"),
 	middleware = require("./middleware/aws.js"),
 	ejs        = require("ejs");
 var Excel = require('exceljs');
+var xlsx = require("node-xlsx");
+var AWS = require('aws-sdk');
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.set("view engine","ejs");
@@ -35,33 +37,47 @@ app.get("/upload",middleware.uploadAWS,function(req,res){
 });
 
 app.get("/getDetail",function(req,res){
-	var AWS = require('aws-sdk');
-	var csvContent = [];
-	var csvHeaders = [];
-	var xlsx = require("node-xlsx");
-	//var buffer = new Buffer();
+
+	var buffer = null;
+	var buffers = null;
+	var workbook2 = null;
+	buffers = [];
+
 	AWS.config.update({
 	    accessKeyId: "AKIAYYZAVOCMN2EX2GA5",
 	    secretAccessKey: "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",
 	});
+
 	var s3 = new AWS.S3();
 	var params = {
         Bucket: "excelstorage",
-        Key: "taggingcar.xlsx"
+        Key: "1234.xlsx"
     };
-
+	//grab xlxs from aws
     var file = s3.getObject(params).createReadStream();
-    var buffers = [];
 
     file.on('data', function (data) {
         buffers.push(data);
     });
-
+	//parse and send it to ejs to render
     file.on('end', function () {
-        var buffer = Buffer.concat(buffers);
-        var workbook = xlsx.parse(buffer);
-        console.log("workbook", typeof workbook[0].data);
-		res.render("dashboard",{content:workbook[0].data});
+		console.log("parse it");
+        buffer = Buffer.concat(buffers);
+        workbook2 = xlsx.parse(buffer);
+        console.log("workbook", workbook2[0]);
+		var x= JSON.stringify(workbook2[0].data);
+		console.log(x[0].length);
+		var buildTable = [];
+		for(var i=0;i<x.length;i++){
+			if(i==0){
+				buildTable["headers"] = x[i];
+			}
+			else{
+				buildTable["row"+i] = x[i];
+			}
+		}
+		console.log(buildTable);
+		res.render("dashboard",{content:workbook2[0].data,content2:buildTable});
     });
 
 });
