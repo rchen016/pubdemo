@@ -1,0 +1,20 @@
+<% include ./partials/header %>
+<% var ejsTable = []; %>
+
+<table class="table">
+    <tbody>
+        <%for(var i in content2){%>
+	        <tr>
+	            <%for(var x=0;x<10;x++){%>
+		            <% if(i=="headers"){%>
+		            	<th scope="col"><%=content2[i][x]%></th>
+		            <% }else{%>
+		            	<td> <%= content2[i][x] %> </td>
+		            <%  } %>
+	            <%}%>
+			</tr>
+		<%}%>
+    </tbody>
+</table>
+
+<% include ./partials/footer %>

@@ -36,8 +36,8 @@ app.get("/upload",middleware.uploadAWS,function(req,res){
 	res.redirect("dashboard");
 });
 
-app.get("/getDetail",function(req,res){
-
+app.get("/:report/getDetail",function(req,res){
+	console.log(req.params.report);
 	var buffer = null;
 	var buffers = null;
 	var workbook2 = null;
@@ -46,7 +46,7 @@ app.get("/getDetail",function(req,res){
 	var s3 = new AWS.S3();
 	var params = {
         Bucket: "excelstorage",
-        Key: "1234.xlsx"
+        Key: req.params.report+".xlsx"
     };
 	//grab xlxs from aws
     var file = s3.getObject(params).createReadStream();
@@ -71,7 +71,7 @@ app.get("/getDetail",function(req,res){
 				buildTable["row"+i] = workbook2[0].data[i];
 			}
 		}
-		res.render("dashboard",{content:workbook2[0].data,content2:buildTable});
+		res.render("detail",{content:workbook2[0].data,content2:buildTable});
     });
 
 });
