@@ -1,21 +1,8 @@
 <% include ./partials/header %>
 <% var ejsTable = []; %>
-<span><script>
-	var x= <%- JSON.stringify(content) %>;
-	console.log(x[0].length);
-	var buildTable = [];
-	for(var i=0;i<x.length;i++){
-		if(i==0){
-			buildTable["headers"] = x[i];
-		}
-		else{
-			buildTable["row"+i] = x[i];
-		}
-	}
-	console.log(buildTable["headers"][0]);
-	ejsTable = buildTable;
-</script>
-</span>
 
-<%- content2 %>
+<% for(var i=0; i<20;i++){ %>
+	<%= content2["row"+i] %>
+<%}%>
+
 <% include ./partials/footer %>

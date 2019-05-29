@@ -7,14 +7,7 @@ middlewareObj.uploadAWS = function(req,res,next){
 	const fs = require('fs');
 	var AWS = require('aws-sdk');
 	const fileName = "C:\\Users\\rchen\\Desktop\\test.xlsx";
-	const s3 = new AWS.S3({
-	    accessKeyId: "AKIAYYZAVOCMN2EX2GA5",
-	    secretAccessKey: "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"
-	});
-	// AWS.config.update({
-	//     accessKeyId: "AKIAYYZAVOCMN2EX2GA5",
-	//     secretAccessKey: "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",
-	// }); // for simplicity. In prod, use loadConfigFromFile, or env variables
+
 	var uuid = require('uuid');
 	// Create name for uploaded object key
 	var keyName = "C:\\Users\\rchen\\Desktop\\test.xlsx";

@@ -43,11 +43,6 @@ app.get("/getDetail",function(req,res){
 	var workbook2 = null;
 	buffers = [];
 
-	AWS.config.update({
-	    accessKeyId: "AKIAYYZAVOCMN2EX2GA5",
-	    secretAccessKey: "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",
-	});
-
 	var s3 = new AWS.S3();
 	var params = {
         Bucket: "excelstorage",
@@ -64,19 +59,18 @@ app.get("/getDetail",function(req,res){
 		console.log("parse it");
         buffer = Buffer.concat(buffers);
         workbook2 = xlsx.parse(buffer);
-        console.log("workbook", workbook2[0]);
 		var x= JSON.stringify(workbook2[0].data);
-		console.log(x[0].length);
 		var buildTable = [];
-		for(var i=0;i<x.length;i++){
+
+		for(var i=0;i<workbook2[0].data.length;i++){
 			if(i==0){
-				buildTable["headers"] = x[i];
+				buildTable["headers"] = workbook2[0].data[i];
 			}
 			else{
-				buildTable["row"+i] = x[i];
+				//console.log("store ",x[i]);
+				buildTable["row"+i] = workbook2[0].data[i];
 			}
 		}
-		console.log(buildTable);
 		res.render("dashboard",{content:workbook2[0].data,content2:buildTable});
     });
 
