@@ -1,24 +1,36 @@
 <% include ./partials/header %>
 <script>
+function filterTable(event) {
+	var filter = event.target.value.toUpperCase();
+	var rows = document.querySelector("#myTable tbody").rows;
+	var cellNum = this.id.substring(this.id.length,this.id.length-1);
+	for (var i = 0; i < rows.length; i++) {
+		var firstCol = rows[i].cells[cellNum].textContent.toUpperCase();
+		if (firstCol.indexOf(filter) > -1 ) {
+			rows[i].style.display = "";
+		}
+		else {
+				rows[i].style.display = "none";
+		}
+	}
+}
 $(document).ready(function(){
-	$("#myInput").on("keyup", function() {
-		var value = $(this).val().toLowerCase();
-		$("#myTable #row1").filter(function() {
-			$("tr").toggle($("tr").text().toLowerCase().indexOf(value) > -1)
-		});
-	});
+	for(var i=0; i<10;i++){
+		document.querySelector('#row'.concat(i)).addEventListener('keyup', filterTable, false);
+	}
 });
 </script>
-<input class="form-control" id="myInput" type="text" placeholder="Search..">
+
 <table class="table" id="myTable">
     <tbody>
         <%for(var i in content2){%>
 	        <tr>
 	            <%for(var x=0;x<10;x++){%>
 		            <% if(i=="headers"){%>
+						<input class="form-control col-1" style="display: inline" id=<%="row".concat(x)%> type="text" placeholder=<%=content2[i][x]%>>
 		            	<th scope="col"><%=content2[i][x]%></th>
 		            <% }else{%>
-		            	<td  id="<%=i%>"> <%= content2[i][x] %> </td>
+		            	<td> <%= content2[i][x] %> </td>
 		            <%  } %>
 	            <%}%>
 			</tr>
