@@ -15,27 +15,80 @@ function filterTable(event) {
 	}
 }
 $(document).ready(function(){
-	for(var i=0; i<10;i++){
-		document.querySelector('#row'.concat(i)).addEventListener('keyup', filterTable, false);
+	var tdContent = document.querySelector("#myTable tbody").rows;
+	console.log(tdContent[19].cells[1].textContent);
+	console.log("len ",tdContent[1].cells[5].textContent.length);
+	for(var i=0;i< tdContent.length; i++){
+		for(var x=0;x< tdContent[i].cells.length; x++){
+			if(tdContent[i].cells[x].textContent=="Change Since Last Report" ||
+			   tdContent[i].cells[x].textContent.indexOf("Liberator or")!=-1 ||
+			   tdContent[i].cells[x].textContent.indexOf("Description")!=-1 ||
+			   tdContent[i].cells[x].textContent.indexOf("# of Lines")!=-1 ||
+			   (tdContent[i].cells[x].textContent.indexOf("Reallocation Opportunity")!=-1 && i==5) ||
+			   tdContent[i].cells[x].textContent.indexOf("Advertiser")!=-1 ||
+			   tdContent[i].cells[x].textContent.indexOf("Reallocation Opportunity	")!=-1 ||
+			   tdContent[i].cells[x].textContent.indexOf("Contract Change")!=-1 ||
+			   tdContent[i].cells[x].textContent.indexOf("Issues")!=-1 ||
+			   tdContent[i].cells[x].textContent.indexOf("lrow")!=-1 ||
+			   tdContent[i].cells[x].textContent.indexOf("Excluded Lines")!=-1 ||
+			   (tdContent[i].cells[x].textContent.indexOf("Opportunity")!=-1 && i==19 && x<4)){
+				tdContent[i].cells[x].classList.add("grayThat");
+			}
+			else if(tdContent[i].cells[x].textContent.indexOf("Recovered Since Last Report")!=-1 ||
+			(tdContent[i].cells[x].textContent.indexOf("Opportunity")!=-1 && i==19 && x>=4) ||
+			(tdContent[i].cells[x].textContent.indexOf("Liberator")!=-1 && i==34) ||
+			(tdContent[i].cells[x].textContent.indexOf("Manual")!=-1 && i==34) ||
+			(tdContent[i].cells[x].textContent.indexOf("Reallocation Opportunity")!=-1 && i==33)){
+				tdContent[i].cells[x].classList.add("orangeThat");
+			}
+			else if((i==8 & x<4) || (i==12 & x<4)){
+				tdContent[i].cells[x].classList.add("tealThat");
+			}
+			else if(tdContent[i].cells[x].textContent.length==0 || tdContent[i].cells[x].textContent.length==2){
+				console.log("sanity check: ",tdContent[i].cells[x].textContent.length);
+				tdContent[i].cells[x].classList.add("unborderThat");
+			}else if( (i==1 && x<3) || (i==5 && x<4) || (i==19 && x<7) || (i==34 && x<8)){
+				tdContent[i].cells[x].classList.add("borderTop");
+			}
+		}
 	}
+
 });
 </script>
+<% if(template != "DFPDart"){ %>
+	<table class="table" id="myTable">
+	    <tbody>
+	        <%for(var i in content2){%>
+		        <tr>
+		            <%for(var x=0;x<10;x++){%>
+			            <% if(i=="headers"){%>
+							<input class="form-control col-1" style="display: inline" id=<%="row".concat(x)%> type="text" placeholder=<%=content2[i][x]%>>
+			            	<th scope="col"><%=content2[i][x]%></th>
+			            <% }else{%>
+			            	<td> <%= content2[i][x] %> </td>
+			            <%  } %>
+		            <%}%>
+				</tr>
+			<%}%>
+	    </tbody>
+	</table>
+<% }else{ %>
+	<table class="table" id="myTable">
+	    <tbody>
+	        <%for(var i in content2){%>
+		        <tr>
+		            <%for(var x=0;x<10;x++){%>
+			            <% if(i=="headers"){%>
+			            	<th scope="col"><%=content2[i][x]%></th>
+			            <% }else{%>
+			            	<td> <%= content2[i][x] %> </td>
+			            <%  } %>
+		            <%}%>
+				</tr>
+			<%}%>
+	    </tbody>
+	</table>
+<% } %>
 
-<table class="table" id="myTable">
-    <tbody>
-        <%for(var i in content2){%>
-	        <tr>
-	            <%for(var x=0;x<10;x++){%>
-		            <% if(i=="headers"){%>
-						<input class="form-control col-1" style="display: inline" id=<%="row".concat(x)%> type="text" placeholder=<%=content2[i][x]%>>
-		            	<th scope="col"><%=content2[i][x]%></th>
-		            <% }else{%>
-		            	<td> <%= content2[i][x] %> </td>
-		            <%  } %>
-	            <%}%>
-			</tr>
-		<%}%>
-    </tbody>
-</table>
 
 <% include ./partials/footer %>

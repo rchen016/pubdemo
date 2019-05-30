@@ -188,6 +188,33 @@ html, body {
 .dashCards{
 	margin-top: 50px;
 }
+table{
+	border: 0px;
+}
+table, th, td {
+  border: 1px solid black;
+}
+.grayThat{
+	border: 1px solid black;
+	background: gray;
+	color: white;
+	font-weight: bold;
+}
+.orangeThat{
+	border: 1px solid black;
+	background: orange;
+	color: white;
+	font-weight: bold;
+}
+.tealThat{
+	background: #ceffff;
+}
+.unborderThat{
+	border: 0px solid black;
+}
+.borderTop{
+	border: 1px solid black !important;
+}
 @media only screen and (max-width: 375px) {
 	.pubLogo{
 		max-width: 91px;

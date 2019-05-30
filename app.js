@@ -71,7 +71,7 @@ app.get("/:report/getDetail",function(req,res){
 				buildTable["row"+i] = workbook2[0].data[i];
 			}
 		}
-		res.render("detail",{content:workbook2[0].data,content2:buildTable});
+		res.render("detail",{template:req.params.report,content2:buildTable});
     });
 
 });
