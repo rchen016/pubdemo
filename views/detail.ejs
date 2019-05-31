@@ -45,9 +45,10 @@ $(document).ready(function(){
 				tdContent[i].cells[x].classList.add("tealThat");
 			}
 			else if(tdContent[i].cells[x].textContent.length==0 || tdContent[i].cells[x].textContent.length==2){
-				console.log("sanity check: ",tdContent[i].cells[x].textContent.length);
 				tdContent[i].cells[x].classList.add("unborderThat");
-			}else if( (i==1 && x<3) || (i==5 && x<4) || (i==19 && x<7) || (i==34 && x<8)){
+			}if( (i==1 && x<3) || (i==5 && x<4) || (i==19 && x<7) || (i==34 && x<7) || (i==18 && x==5)|| (i==33 && x==3)){
+				console.log("border top",i);
+				console.log("border top",x);
 				tdContent[i].cells[x].classList.add("borderTop");
 			}
 		}
