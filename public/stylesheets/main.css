@@ -305,4 +305,7 @@ table, th, td {
 	.bottomFooter{
 		height: 720px;
 	}
+	.dashCardInner{
+		margin-top: 35px;
+	}
 }

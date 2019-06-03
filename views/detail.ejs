@@ -15,48 +15,53 @@ function filterTable(event) {
 	}
 }
 $(document).ready(function(){
-	var tdContent = document.querySelector("#myTable tbody").rows;
-	console.log(tdContent[19].cells[1].textContent);
-	console.log("len ",tdContent[1].cells[5].textContent.length);
-	for(var i=0;i< tdContent.length; i++){
-		for(var x=0;x< tdContent[i].cells.length; x++){
-			if(tdContent[i].cells[x].textContent=="Change Since Last Report" ||
-			   tdContent[i].cells[x].textContent.indexOf("Liberator or")!=-1 ||
-			   tdContent[i].cells[x].textContent.indexOf("Description")!=-1 ||
-			   tdContent[i].cells[x].textContent.indexOf("# of Lines")!=-1 ||
-			   (tdContent[i].cells[x].textContent.indexOf("Reallocation Opportunity")!=-1 && i==5) ||
-			   tdContent[i].cells[x].textContent.indexOf("Advertiser")!=-1 ||
-			   tdContent[i].cells[x].textContent.indexOf("Reallocation Opportunity	")!=-1 ||
-			   tdContent[i].cells[x].textContent.indexOf("Contract Change")!=-1 ||
-			   tdContent[i].cells[x].textContent.indexOf("Issues")!=-1 ||
-			   tdContent[i].cells[x].textContent.indexOf("lrow")!=-1 ||
-			   tdContent[i].cells[x].textContent.indexOf("Excluded Lines")!=-1 ||
-			   (tdContent[i].cells[x].textContent.indexOf("Opportunity")!=-1 && i==19 && x<4)){
-				tdContent[i].cells[x].classList.add("grayThat");
+	if("<%=template%>"=="DFPDart"){
+		var tdContent = document.querySelector("#myTable tbody").rows;
+		console.log(tdContent[19].cells[1].textContent);
+		console.log("len ",tdContent[1].cells[5].textContent.length);
+		for(var i=0;i< tdContent.length; i++){
+			for(var x=0;x< tdContent[i].cells.length; x++){
+				if(tdContent[i].cells[x].textContent=="Change Since Last Report" ||
+				   tdContent[i].cells[x].textContent.indexOf("Liberator or")!=-1 ||
+				   tdContent[i].cells[x].textContent.indexOf("Description")!=-1 ||
+				   tdContent[i].cells[x].textContent.indexOf("# of Lines")!=-1 ||
+				   (tdContent[i].cells[x].textContent.indexOf("Reallocation Opportunity")!=-1 && i==5) ||
+				   tdContent[i].cells[x].textContent.indexOf("Advertiser")!=-1 ||
+				   tdContent[i].cells[x].textContent.indexOf("Reallocation Opportunity	")!=-1 ||
+				   tdContent[i].cells[x].textContent.indexOf("Contract Change")!=-1 ||
+				   tdContent[i].cells[x].textContent.indexOf("Issues")!=-1 ||
+				   tdContent[i].cells[x].textContent.indexOf("lrow")!=-1 ||
+				   tdContent[i].cells[x].textContent.indexOf("Excluded Lines")!=-1 ||
+				   (tdContent[i].cells[x].textContent.indexOf("Opportunity")!=-1 && i==19 && x<4)){
+					tdContent[i].cells[x].classList.add("grayThat");
+				}
+				else if(tdContent[i].cells[x].textContent.indexOf("Recovered Since Last Report")!=-1 ||
+				(tdContent[i].cells[x].textContent.indexOf("Opportunity")!=-1 && i==19 && x>=4) ||
+				(tdContent[i].cells[x].textContent.indexOf("Liberator")!=-1 && i==34) ||
+				(tdContent[i].cells[x].textContent.indexOf("Manual")!=-1 && i==34) ||
+				(tdContent[i].cells[x].textContent.indexOf("Reallocation Opportunity")!=-1 && i==33)){
+					tdContent[i].cells[x].classList.add("orangeThat");
+				}
+				else if((i==8 & x<4) || (i==12 & x<4)){
+					tdContent[i].cells[x].classList.add("tealThat");
+				}
+				else if(tdContent[i].cells[x].textContent.length==0 || tdContent[i].cells[x].textContent.length==2){
+					tdContent[i].cells[x].classList.add("unborderThat");
+				}if( (i==1 && x<3) || (i==5 && x<4) || (i==19 && x<7) || (i==34 && x<7) || (i==18 && x==5)|| (i==33 && x==3)){
+					tdContent[i].cells[x].classList.add("borderTop");
+				}
 			}
-			else if(tdContent[i].cells[x].textContent.indexOf("Recovered Since Last Report")!=-1 ||
-			(tdContent[i].cells[x].textContent.indexOf("Opportunity")!=-1 && i==19 && x>=4) ||
-			(tdContent[i].cells[x].textContent.indexOf("Liberator")!=-1 && i==34) ||
-			(tdContent[i].cells[x].textContent.indexOf("Manual")!=-1 && i==34) ||
-			(tdContent[i].cells[x].textContent.indexOf("Reallocation Opportunity")!=-1 && i==33)){
-				tdContent[i].cells[x].classList.add("orangeThat");
-			}
-			else if((i==8 & x<4) || (i==12 & x<4)){
-				tdContent[i].cells[x].classList.add("tealThat");
-			}
-			else if(tdContent[i].cells[x].textContent.length==0 || tdContent[i].cells[x].textContent.length==2){
-				tdContent[i].cells[x].classList.add("unborderThat");
-			}if( (i==1 && x<3) || (i==5 && x<4) || (i==19 && x<7) || (i==34 && x<7) || (i==18 && x==5)|| (i==33 && x==3)){
-				console.log("border top",i);
-				console.log("border top",x);
-				tdContent[i].cells[x].classList.add("borderTop");
-			}
+		}
+
+	}else if("<%=template%>"=="1234"){
+		for(var i=0; i<10;i++){
+			document.querySelector('#row'.concat(i)).addEventListener('keyup', filterTable, false);
 		}
 	}
 
 });
 </script>
-<% if(template != "DFPDart"){ %>
+<% if(template == "1234"){ %>
 	<table class="table" id="myTable">
 	    <tbody>
 	        <%for(var i in content2){%>
