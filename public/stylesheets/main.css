@@ -208,6 +208,11 @@ table, th, td {
 }
 .tealThat{
 	background: #ceffff;
+	font-weight: bold;
+}
+
+.lightGrayThat{
+	background: #f9f9f9;
 }
 .unborderThat{
 	border: 0px solid black;
@@ -215,8 +220,11 @@ table, th, td {
 .borderTop{
 	border: 1px solid black !important;
 }
+.boldThat{
+	font-weight: bold;
+}
 #mainTable tr:hover {
-	background-color: #ddd;
+	background-color: #f9f9f9;
 }
 
 @media only screen and (max-width: 375px) {

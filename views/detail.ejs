@@ -15,12 +15,14 @@ function filterTable(event) {
 	}
 }
 $(document).ready(function(){
+	document.querySelector("body").style = "font-weight: bold";
 	if("<%=template%>"=="DFPDart"){
 		var tdContent = document.querySelector("#mainTable tbody").rows;
 		console.log(tdContent[19].cells[1].textContent);
 		console.log("len ",tdContent[1].cells[5].textContent.length);
 		for(var i=0;i< tdContent.length; i++){
 			for(var x=0;x< tdContent[i].cells.length; x++){
+				tdContent[i].cells[x].classList.add("boldThat");
 				if(tdContent[i].cells[x].textContent=="Change Since Last Report" ||
 				   tdContent[i].cells[x].textContent.indexOf("Liberator or")!=-1 ||
 				   tdContent[i].cells[x].textContent.indexOf("Description")!=-1 ||
@@ -56,6 +58,33 @@ $(document).ready(function(){
 	}else if("<%=template%>"=="1234"){
 		for(var i=0; i<10;i++){
 			document.querySelector('#row'.concat(i)).addEventListener('keyup', filterTable, false);
+		}
+	}else if("<%=template%>"=="DFPInvTuner"){
+		var tdContent = document.querySelector("#mainTable tbody").rows;
+		console.log(tdContent);
+		for(var i=0;i< tdContent.length; i++){
+			for(var x=0;x< tdContent[i].cells.length; x++){
+				tdContent[i].cells[x].classList.add("boldThat");
+				if(tdContent[i].cells[x].textContent.indexOf("Change Since Last Report") != -1 ||
+				   tdContent[i].cells[x].textContent.indexOf("Total")!=-1 ||
+				   tdContent[i].cells[x].textContent.indexOf("National")!=-1 ||
+				   tdContent[i].cells[x].textContent.indexOf("Regional")!=-1 ||
+				   tdContent[i].cells[x].textContent.indexOf("Local")!=-1 ||
+				   tdContent[i].cells[x].textContent.indexOf("Pub")!=-1 ||
+				   tdContent[i].cells[x].textContent.indexOf("% of Imps Last 30 Days")!=-1 ||
+				   tdContent[i].cells[x].textContent.indexOf("Missing Lookups")!=-1 ||
+				   tdContent[i].cells[x].textContent.indexOf("Forgot to Delete")!=-1 ||
+				   tdContent[i].cells[x].textContent.indexOf("Canada")!=-1) {
+					   if(x>0 && x<5) tdContent[i].cells[x].classList.add("grayThat");
+					   else if(x==0) tdContent[i].cells[x].classList.add("orangeThat");
+					   else tdContent[i].cells[x].classList.add("tealThat");
+				}
+				if((i==2 && x <3) || (i==5 && x <3) || (i==7 && x <3) || (i==9 && x <3) ||
+					(i==14 && x <12) || (i==16 && x <12) || (i==18 && x <12) || (i==20 && x <12) ||
+					(i==22 && x <12) || (i==24 && x <12) || (i==26 && x <12) || (i==28 && x <12)){
+					tdContent[i].cells[x].classList.add("lightGrayThat");
+				}
+			}
 		}
 	}
 
