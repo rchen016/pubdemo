@@ -215,6 +215,10 @@ table, th, td {
 .borderTop{
 	border: 1px solid black !important;
 }
+#mainTable tr:hover {
+	background-color: #ddd;
+}
+
 @media only screen and (max-width: 375px) {
 	.pubLogo{
 		max-width: 91px;

@@ -59,10 +59,12 @@ app.get("/:report/getDetail",function(req,res){
 		console.log("parse it");
         buffer = Buffer.concat(buffers);
         workbook2 = xlsx.parse(buffer);
-		var x= JSON.stringify(workbook2[0].data);
+		var x = JSON.stringify(workbook2[0].data);
 		var buildTable = [];
+		var maxColCount = 0;
 
 		for(var i=0;i<workbook2[0].data.length;i++){
+			if(maxColCount<workbook2[0].data[i].length) maxColCount = workbook2[0].data[i].length;
 			if(i==0){
 				buildTable["headers"] = workbook2[0].data[i];
 			}
@@ -71,7 +73,8 @@ app.get("/:report/getDetail",function(req,res){
 				buildTable["row"+i] = workbook2[0].data[i];
 			}
 		}
-		res.render("detail",{template:req.params.report,content2:buildTable});
+		console.log("col: ",maxColCount);
+		res.render("detail",{template:req.params.report,content2:buildTable,maxColCount: maxColCount});
     });
 
 });

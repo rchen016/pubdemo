@@ -2,7 +2,7 @@
 <script>
 function filterTable(event) {
 	var filter = event.target.value.toUpperCase();
-	var rows = document.querySelector("#myTable tbody").rows;
+	var rows = document.querySelector("#mainTable tbody").rows;
 	var cellNum = this.id.substring(this.id.length,this.id.length-1);
 	for (var i = 0; i < rows.length; i++) {
 		var firstCol = rows[i].cells[cellNum].textContent.toUpperCase();
@@ -16,7 +16,7 @@ function filterTable(event) {
 }
 $(document).ready(function(){
 	if("<%=template%>"=="DFPDart"){
-		var tdContent = document.querySelector("#myTable tbody").rows;
+		var tdContent = document.querySelector("#mainTable tbody").rows;
 		console.log(tdContent[19].cells[1].textContent);
 		console.log("len ",tdContent[1].cells[5].textContent.length);
 		for(var i=0;i< tdContent.length; i++){
@@ -62,11 +62,11 @@ $(document).ready(function(){
 });
 </script>
 <% if(template == "1234"){ %>
-	<table class="table" id="myTable">
+	<table class="table" id="mainTable">
 	    <tbody>
 	        <%for(var i in content2){%>
 		        <tr>
-		            <%for(var x=0;x<10;x++){%>
+		            <%for(var x=0;x<maxColCount;x++){%>
 			            <% if(i=="headers"){%>
 							<input class="form-control col-1" style="display: inline" id=<%="row".concat(x)%> type="text" placeholder=<%=content2[i][x]%>>
 			            	<th scope="col"><%=content2[i][x]%></th>
@@ -78,12 +78,12 @@ $(document).ready(function(){
 			<%}%>
 	    </tbody>
 	</table>
-<% }else{ %>
-	<table class="table" id="myTable">
+<% }else if(template == "DFPDart"){ %>
+	<table class="table" id="mainTable">
 	    <tbody>
 	        <%for(var i in content2){%>
 		        <tr>
-		            <%for(var x=0;x<10;x++){%>
+		            <%for(var x=0;x<maxColCount;x++){%>
 			            <% if(i=="headers"){%>
 			            	<th scope="col"><%=content2[i][x]%></th>
 			            <% }else{%>
@@ -94,7 +94,20 @@ $(document).ready(function(){
 			<%}%>
 	    </tbody>
 	</table>
+<% } else if(template == "DFPInvTuner"){%>
+	<table class="table" id="mainTable">
+	    <tbody>
+	        <%for(var i in content2){%>
+		        <tr>
+		            <%for(var x=0;x<maxColCount;x++){%>
+			            	<td> <%= content2[i][x] %> </td>
+		            <%}%>
+				</tr>
+			<%}%>
+	    </tbody>
+	</table>
 <% } %>
+
 
 
 <% include ./partials/footer %>
