@@ -4,7 +4,7 @@ function filterTable(event) {
 	var filter = event.target.value.toUpperCase();
 	var rows = document.querySelector("#mainTable tbody").rows;
 	var cellNum = this.id.substring(this.id.length,this.id.length-1);
-	for (var i = 0; i < rows.length; i++) {
+	for (var i = 1; i < rows.length; i++) {
 		var firstCol = rows[i].cells[cellNum].textContent.toUpperCase();
 		if (firstCol.indexOf(filter) > -1 ) {
 			rows[i].style.display = "";

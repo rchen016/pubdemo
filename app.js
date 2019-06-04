@@ -42,14 +42,14 @@ app.get("/:report/getDetail",function(req,res){
 	var buffers = null;
 	var workbook2 = null;
 	buffers = [];
-
+	var unfound;
 	var s3 = new AWS.S3();
 	var params = {
         Bucket: "excelstorage",
         Key: req.params.report+".xlsx"
     };
 	//grab xlxs from aws
-    var file = s3.getObject(params).createReadStream();
+	var file = s3.getObject(params).createReadStream();
 
     file.on('data', function (data) {
         buffers.push(data);
