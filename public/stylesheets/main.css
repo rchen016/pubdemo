@@ -71,7 +71,13 @@ html, body {
 	box-sizing: content-box;
 	padding: 15px 2.2%;
 }
-
+.fixed-top{
+	position: fixed;
+	top:0;
+	right:0;
+	left:0;
+	z-index: 1392;
+}
 .ourPubText{
 	margin-bottom: 25px;
 	margin-top: 25px;
@@ -190,27 +196,37 @@ html, body {
 }
 table{
 	border: 0px;
+	margin-top: 56px;
 }
 table, th, td {
   border: 1px solid black;
+}
+th{
+	border: 0px;
 }
 .grayThat{
 	border: 1px solid black;
 	background: gray;
 	color: white;
 	font-weight: bold;
+	text-align: center;
 }
 .orangeThat{
 	border: 1px solid black;
 	background: orange;
 	color: white;
 	font-weight: bold;
+	text-align: center;
 }
 .tealThat{
 	background: #ceffff;
 	font-weight: bold;
 }
-
+.tealThatHeader{
+	background: #ceffff;
+	font-weight: bold;
+	text-align: center;
+}
 .lightGrayThat{
 	background: #f9f9f9;
 }
@@ -240,7 +256,21 @@ table, th, td {
 #mainTable tr:hover {
 	background-color: #f9f9f9;
 }
+#mainBlock{
+	margin-top: 106px;
+}
+.dashCards{
+	margin-top: 131px;
+}
 
+.filterTop{
+	width: 400px;
+	text-align: center;
+}
+.filterTopContainer{
+	width: 60%;
+	display:none;
+}
 @media only screen and (max-width: 375px) {
 	.pubLogo{
 		max-width: 91px;
@@ -285,7 +315,6 @@ table, th, td {
 	    margin-top: 50px;
 	    margin-bottom: 50px;
 	}
-
 	.featuredArticleContent {
 	    margin-top: 15px;
 	}
@@ -333,5 +362,8 @@ table, th, td {
 	}
 	.dashCardInner{
 		margin-top: 35px;
+	}
+	#mainBlock{
+		margin-top: 36px;
 	}
 }

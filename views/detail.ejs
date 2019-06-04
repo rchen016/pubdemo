@@ -53,6 +53,7 @@
 
 	$(document).ready(function(){
 		document.querySelector("body").style = "font-weight: bold";
+		document.querySelector(".filterTopContainer").style = "display:block"; //enable filter
 		if("<%=template%>"=="DFPDart"){
 			document.querySelector("#filterThat").addEventListener('keyup', floatingFilterTable, false);
 			var tdContent = document.querySelector("#mainTable tbody").rows;
@@ -113,7 +114,7 @@
 					   tdContent[i].cells[x].textContent.indexOf("Canada")!=-1) {
 						   if(x>0 && x<5) tdContent[i].cells[x].classList.add("grayThat");
 						   else if(x==0) tdContent[i].cells[x].classList.add("orangeThat");
-						   else tdContent[i].cells[x].classList.add("tealThat");
+						   else tdContent[i].cells[x].classList.add("tealThatHeader");
 					}
 					if((i==2 && x <3) || (i==5 && x <3) || (i==7 && x <3) || (i==9 && x <3) ||
 						(i==14 && x <12) || (i==16 && x <12) || (i==18 && x <12) || (i==20 && x <12) ||
@@ -172,9 +173,5 @@
 	    </tbody>
 	</table>
 <% } %>
-
-<div class="floatingFilter">
-	<input class="form-control filterBot" id="filterThat" type="text" placeholder="Filter">
-</div>
 
 <% include ./partials/footer %>
