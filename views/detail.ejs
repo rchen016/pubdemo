@@ -4,22 +4,43 @@ function filterTable(event) {
 	var filter = event.target.value.toUpperCase();
 	var rows = document.querySelector("#mainTable tbody").rows;
 	var cellNum = this.id.substring(this.id.length,this.id.length-1);
+	console.log("Cell Num: ", cellNum);
 	for (var i = 1; i < rows.length; i++) {
 		var firstCol = rows[i].cells[cellNum].textContent.toUpperCase();
 		if (firstCol.indexOf(filter) > -1 ) {
 			rows[i].style.display = "";
 		}
 		else {
-				rows[i].style.display = "none";
+			rows[i].style.display = "none";
 		}
 	}
 }
+
+function floatingFilterTable(event) {
+	var filter = event.target.value.toUpperCase();
+	var rows = document.querySelector("#mainTable tbody").rows;
+	var cellNum = this.id.substring(this.id.length,this.id.length-1);
+	for (var i = 1; i < rows.length; i++) {
+		for(var x=0; x<<%=maxColCount%>;x++){
+			var firstCol = rows[i].cells[x].textContent.toUpperCase();
+			if (firstCol.indexOf(filter) > -1 ) {
+				console.log("Find!");
+				rows[i].style.display = "";
+				break;
+			}
+			else {
+				console.log("can't find");
+				rows[i].style.display = "none";
+			}
+		}
+	}
+}
+
 $(document).ready(function(){
 	document.querySelector("body").style = "font-weight: bold";
 	if("<%=template%>"=="DFPDart"){
+		document.querySelector("#row0").addEventListener('keyup', floatingFilterTable, false);
 		var tdContent = document.querySelector("#mainTable tbody").rows;
-		console.log(tdContent[19].cells[1].textContent);
-		console.log("len ",tdContent[1].cells[5].textContent.length);
 		for(var i=0;i< tdContent.length; i++){
 			for(var x=0;x< tdContent[i].cells.length; x++){
 				tdContent[i].cells[x].classList.add("boldThat");
@@ -56,12 +77,13 @@ $(document).ready(function(){
 		}
 
 	}else if("<%=template%>"=="1234"){
-		for(var i=0; i<10;i++){
-			document.querySelector('#row'.concat(i)).addEventListener('keyup', filterTable, false);
-		}
+		// for(var i=0; i<"<%=maxColCount%>";i++){
+		// 	document.querySelector('#row'.concat(i)).addEventListener('keyup', floatFilter, false);
+		// }
+		document.querySelector("#row0").addEventListener('keyup', floatingFilterTable, false);
 	}else if("<%=template%>"=="DFPInvTuner"){
+		document.querySelector("#row0").addEventListener('keyup', floatingFilterTable, false);
 		var tdContent = document.querySelector("#mainTable tbody").rows;
-		console.log(tdContent);
 		for(var i=0;i< tdContent.length; i++){
 			for(var x=0;x< tdContent[i].cells.length; x++){
 				tdContent[i].cells[x].classList.add("boldThat");
@@ -97,7 +119,7 @@ $(document).ready(function(){
 		        <tr>
 		            <%for(var x=0;x<maxColCount;x++){%>
 			            <% if(i=="headers"){%>
-							<input class="form-control col-1" style="display: inline" id=<%="row".concat(x)%> type="text" placeholder=<%=content2[i][x]%>>
+
 			            	<th scope="col"><%=content2[i][x]%></th>
 			            <% }else{%>
 			            	<td> <%= content2[i][x] %> </td>
@@ -137,6 +159,9 @@ $(document).ready(function(){
 	</table>
 <% } %>
 
+<div class="floatingFilter">
+	<input class="form-control filterBot" id=<%="row".concat(0)%> type="text" placeholder="Filter">
+</div>
 
 
 <% include ./partials/footer %>

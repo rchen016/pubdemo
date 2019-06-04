@@ -223,6 +223,20 @@ table, th, td {
 .boldThat{
 	font-weight: bold;
 }
+.floatingFilter{
+	position: fixed;
+	bottom: 0;
+	z-index: 10000000;
+	opacity: 0.7;
+	text-align: center;
+	height: 40px;
+	width: 100%;
+}
+.filterBot{
+	width:200px;
+	display: inline;
+	text-align: center;
+}
 #mainTable tr:hover {
 	background-color: #f9f9f9;
 }
