@@ -195,21 +195,13 @@ html, body {
 	margin-top: 50px;
 }
 
-/* table{
-	margin-top: 56px;
-} */
-
-.table{
-	margin-top: 56px;
+#mainTable{
+	margin-top: 66px;
 }
-.table td{
+#mainTable td{
 	border: 1px solid black;
 	padding: .3em !important;
 }
-/* table, td {
-  border: 1px solid black;
-  padding: .3em !important;
-} */
 
 .grayThat{
 	border: 1px solid black;

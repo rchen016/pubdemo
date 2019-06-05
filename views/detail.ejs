@@ -5,7 +5,9 @@
 		var filter = event.target.value.toUpperCase();
 		var rows = document.querySelector("#mainTable tbody").rows;
 		var cellNum = this.id.substring(this.id.length,this.id.length-1);
-		for (var i = 1; i < rows.length; i++) {
+		var startPoint = 0;
+		if("<%=template%>"=="1234") startPoint = 1;
+		for (var i = startPoint; i < rows.length; i++) {
 			for(var x=0; x<<%=maxColCount%>-1;x++){
 				var firstCol = rows[i].cells[x].textContent.toUpperCase();
 				//Allow User to filter value > <
@@ -45,6 +47,18 @@
 					break;
 				}
 				else {
+					if("<%=template%>"=="DFPDart"){
+						if( [0,5,18,19,33,34].includes(i) ){
+							rows[i].style.display = "";
+							break;
+						}
+					}
+					else if("<%=template%>"=="DFPInvTuner"){
+						if( [0,11,12,31,36].includes(i) ){
+							rows[i].style.display = "";
+							break;
+						}
+					}
 					rows[i].style.display = "none";
 				}
 			}
@@ -54,32 +68,28 @@
 	$(document).ready(function(){
 		document.querySelector("body").style = "font-weight: bold";
 		document.querySelector(".filterTopContainer").style = "display:block"; //enable filter
+		var tdContent = document.querySelector("#mainTable tbody").rows;
+		var dfpDartGreyArr = ["Change Since Last Report","Liberator or Manual? In decision hierarchy.","Description","# of Lines","Reallocation Opportunity","Advertiser","Reallocation Opportunity","Contract Change","Issues","lrow","Excluded Lines","Opportunity Ending This Month","Total Projected Opportunity","Opportunity Ending Next Month","Contract Change 20%+ ALERT"];
+		var dfpDartOrangeArr = ["Recovered Since Last Report","Opportunity","Liberator","Manual","Reallocation Opportunity","Total Opportunity","Opportunity Ending This Month","Opportunity Ending Next Month"];
+		var dfpInvTunerColorArr = ["Change Since Last Report","Total","National","Regional","Local","Pub","% of Imps Last 30 Days","Missing Lookups","Forgot to Delete","Canada"];
 		if("<%=template%>"=="DFPDart"){
 			document.querySelector("#filterThat").addEventListener('keyup', floatingFilterTable, false);
-			var tdContent = document.querySelector("#mainTable tbody").rows;
+			var isoStringTdContent;
 			//Painting all the cells the proper color scheme and bordering
 			for(var i=0;i< tdContent.length; i++){
 				for(var x=0;x< tdContent[i].cells.length; x++){
+					isoStringTdContent = String(tdContent[i].cells[x].textContent.substr(1,tdContent[i].cells[x].textContent.length-2));
 					tdContent[i].cells[x].classList.add("boldThat");
-					if(tdContent[i].cells[x].textContent=="Change Since Last Report" ||
-					   tdContent[i].cells[x].textContent.indexOf("Liberator or")!=-1 ||
-					   tdContent[i].cells[x].textContent.indexOf("Description")!=-1 ||
-					   tdContent[i].cells[x].textContent.indexOf("# of Lines")!=-1 ||
-					   (tdContent[i].cells[x].textContent.indexOf("Reallocation Opportunity")!=-1 && i==5) ||
-					   tdContent[i].cells[x].textContent.indexOf("Advertiser")!=-1 ||
-					   tdContent[i].cells[x].textContent.indexOf("Reallocation Opportunity	")!=-1 ||
-					   tdContent[i].cells[x].textContent.indexOf("Contract Change")!=-1 ||
-					   tdContent[i].cells[x].textContent.indexOf("Issues")!=-1 ||
-					   tdContent[i].cells[x].textContent.indexOf("lrow")!=-1 ||
-					   tdContent[i].cells[x].textContent.indexOf("Excluded Lines")!=-1 ||
-					   (tdContent[i].cells[x].textContent.indexOf("Opportunity")!=-1 && i==19 && x<4)){
+					console.log(isoStringTdContent);
+					if( ((i==0 && x==2) || (i==34 && [1,5,6].includes(x)) || (dfpDartGreyArr.includes(isoStringTdContent) && x<4) ||
+					   (dfpDartGreyArr.includes(isoStringTdContent) && i==5) ||
+					   (dfpDartGreyArr.includes(isoStringTdContent) && i==19 && x<4)) && ![1,2,3,33].includes(i)){
 						tdContent[i].cells[x].classList.add("grayThat");
 					}
-					else if(tdContent[i].cells[x].textContent.indexOf("Recovered Since Last Report")!=-1 ||
-					(tdContent[i].cells[x].textContent.indexOf("Opportunity")!=-1 && i==19 && x>=4) ||
-					(tdContent[i].cells[x].textContent.indexOf("Liberator")!=-1 && i==34) ||
-					(tdContent[i].cells[x].textContent.indexOf("Manual")!=-1 && i==34) ||
-					(tdContent[i].cells[x].textContent.indexOf("Reallocation Opportunity")!=-1 && i==33)){
+					else if( (dfpDartOrangeArr.includes(isoStringTdContent) ||
+						   (dfpDartOrangeArr.includes(isoStringTdContent) && i==19 && x>=4) ||
+						   (dfpDartOrangeArr.includes(isoStringTdContent) && i==34) ||
+						   (dfpDartOrangeArr.includes(isoStringTdContent) && i==33)) && ![14,15].includes(i)){
 						tdContent[i].cells[x].classList.add("orangeThat");
 					}
 					else if((i==8 & x<4) || (i==12 & x<4)){
@@ -87,34 +97,26 @@
 					}
 					else if(tdContent[i].cells[x].textContent.length==0 || tdContent[i].cells[x].textContent.length==2){
 						tdContent[i].cells[x].classList.add("unborderThat");
-					}if( (i==1 && x<3) || (i==5 && x<4) || (i==19 && x<7) || (i==34 && x<7) || (i==18 && x==5)|| (i==33 && x==3)){
+					}if( (i==0 && x==2) || (i==1 && x<3) || (i==5 && x<4) || (i==19 && x<7) ||
+					     (i==34 && x<7) || (i==18 && x==5) || (i==33 && x==3)){
 						tdContent[i].cells[x].classList.add("borderTop");
 					}
 				}
 			}
-
 		}else if("<%=template%>"=="1234"){
 			document.querySelector("#filterThat").addEventListener('keyup', floatingFilterTable, false);
+			for(var i=0;i<tdContent[0].cells.length;i++) tdContent[0].cells[i].classList.add("grayThat");
 		}else if("<%=template%>"=="DFPInvTuner"){
 			document.querySelector("#filterThat").addEventListener('keyup', floatingFilterTable, false);
-			var tdContent = document.querySelector("#mainTable tbody").rows;
 			//Painting all the cells the proper color scheme and bordering
 			for(var i=0;i< tdContent.length; i++){
 				for(var x=0;x< tdContent[i].cells.length; x++){
+					isoStringTdContent = String(tdContent[i].cells[x].textContent.substr(1,tdContent[i].cells[x].textContent.length-2));
 					tdContent[i].cells[x].classList.add("boldThat");
-					if(tdContent[i].cells[x].textContent.indexOf("Change Since Last Report") != -1 ||
-					   tdContent[i].cells[x].textContent.indexOf("Total")!=-1 ||
-					   tdContent[i].cells[x].textContent.indexOf("National")!=-1 ||
-					   tdContent[i].cells[x].textContent.indexOf("Regional")!=-1 ||
-					   tdContent[i].cells[x].textContent.indexOf("Local")!=-1 ||
-					   tdContent[i].cells[x].textContent.indexOf("Pub")!=-1 ||
-					   tdContent[i].cells[x].textContent.indexOf("% of Imps Last 30 Days")!=-1 ||
-					   tdContent[i].cells[x].textContent.indexOf("Missing Lookups")!=-1 ||
-					   tdContent[i].cells[x].textContent.indexOf("Forgot to Delete")!=-1 ||
-					   tdContent[i].cells[x].textContent.indexOf("Canada")!=-1) {
-						   if(x>0 && x<5) tdContent[i].cells[x].classList.add("grayThat");
-						   else if(x==0) tdContent[i].cells[x].classList.add("orangeThat");
-						   else tdContent[i].cells[x].classList.add("tealThatHeader");
+					if(dfpInvTunerColorArr.includes(isoStringTdContent)){
+						if(x>0 && x<5) tdContent[i].cells[x].classList.add("grayThat");
+						else if(x==0) tdContent[i].cells[x].classList.add("orangeThat");
+						else tdContent[i].cells[x].classList.add("tealThatHeader");
 					}
 					if((i==2 && x <3) || (i==5 && x <3) || (i==7 && x <3) || (i==9 && x <3) ||
 						(i==14 && x <12) || (i==16 && x <12) || (i==18 && x <12) || (i==20 && x <12) ||
