@@ -194,16 +194,23 @@ html, body {
 .dashCards{
 	margin-top: 50px;
 }
-table{
-	border: 0px;
+
+/* table{
+	margin-top: 56px;
+} */
+
+.table{
 	margin-top: 56px;
 }
-table, th, td {
+.table td{
+	border: 1px solid black;
+	padding: .3em !important;
+}
+/* table, td {
   border: 1px solid black;
-}
-th{
-	border: 0px;
-}
+  padding: .3em !important;
+} */
+
 .grayThat{
 	border: 1px solid black;
 	background: gray;
@@ -231,7 +238,7 @@ th{
 	background: #f9f9f9;
 }
 .unborderThat{
-	border: 0px solid black;
+	border: 0px solid transparent !important;
 }
 .borderTop{
 	border: 1px solid black !important;

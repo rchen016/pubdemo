@@ -121,6 +121,12 @@
 						(i==22 && x <12) || (i==24 && x <12) || (i==26 && x <12) || (i==28 && x <12)){
 						tdContent[i].cells[x].classList.add("lightGrayThat");
 					}
+					else if(tdContent[i].cells[x].textContent.length==0 || tdContent[i].cells[x].textContent.length==2){
+						tdContent[i].cells[x].classList.add("unborderThat");
+					}
+					if( (i==1 && x<3) || (i==4 && x<3) || (i==11 && x==1) || (i==11 && x==6) || (i==31 && x==0)|| (i==32 && x==1)|| (i==36 && x==0)|| (i==37 && x==1)){
+						tdContent[i].cells[x].classList.add("borderTop");
+					}
 				}
 			}
 		}
